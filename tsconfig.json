@@ -12,7 +12,7 @@
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "ignoreDeprecations": "6.0"
+
   },
   "include": ["src/**/*"]
 }
