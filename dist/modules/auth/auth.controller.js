@@ -16,9 +16,9 @@ exports.AuthController = void 0;
 const auth_service_1 = require("./auth.service");
 const audit_1 = require("../../utils/audit");
 const common_1 = require("@nestjs/common");
-const jwt_auth_guard_1 = require("@common/guards/jwt-auth.guard");
-const roles_guard_1 = require("@common/guards/roles.guard");
-const roles_decorator_1 = require("@common/decorators/roles.decorator");
+const jwt_auth_guard_1 = require("../../common/guards/jwt-auth.guard");
+const roles_guard_1 = require("../../common/guards/roles.guard");
+const roles_decorator_1 = require("../../common/decorators/roles.decorator");
 const client_1 = require("@prisma/client");
 /**
  * AuthController provides authentication related endpoints.

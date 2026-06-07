@@ -17,10 +17,10 @@ const common_1 = require("@nestjs/common");
 const users_service_1 = require("./users.service");
 const create_user_dto_1 = require("./dto/create-user.dto");
 const update_user_dto_1 = require("./dto/update-user.dto");
-const roles_decorator_1 = require("@common/decorators/roles.decorator");
+const roles_decorator_1 = require("../../common/decorators/roles.decorator");
 const client_1 = require("@prisma/client");
-const jwt_auth_guard_1 = require("@common/guards/jwt-auth.guard");
-const roles_guard_1 = require("@common/guards/roles.guard");
+const jwt_auth_guard_1 = require("../../common/guards/jwt-auth.guard");
+const roles_guard_1 = require("../../common/guards/roles.guard");
 const common_2 = require("@nestjs/common");
 let UsersController = class UsersController {
     constructor(usersService) {

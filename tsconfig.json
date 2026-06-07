@@ -4,10 +4,6 @@
     "target": "es2021",
     "rootDir": "./src",
     "outDir": "./dist",
-    "baseUrl": ".",
-    "paths": {
-      "@common/*": ["src/common/*", "dist/common/*"]
-    },
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
