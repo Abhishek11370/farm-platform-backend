@@ -15,7 +15,8 @@ async function bootstrap() {
     app.useGlobalInterceptors(new transform_interceptor_1.TransformInterceptor());
     // Logger middleware
     // LoggerMiddleware registration moved to AppModule (Nest best practice)
-    await app.listen(3000);
-    console.log('🚀 Application listening on port 3000');
+    const port = parseInt(process.env.PORT || '3000', 10);
+    await app.listen(port);
+    console.log(`🚀 Application listening on port ${port}`);
 }
 bootstrap();
