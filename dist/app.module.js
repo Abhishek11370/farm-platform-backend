@@ -12,6 +12,7 @@ const config_1 = require("@nestjs/config");
 const auth_module_1 = require("./modules/auth/auth.module");
 const prisma_service_1 = require("./prisma/prisma.service");
 const activity_module_1 = require("./modules/activity/activity.module");
+const health_controller_1 = require("./health.controller");
 const address_module_1 = require("./modules/address/address.module");
 const auction_module_1 = require("./modules/auction/auction.module");
 const cart_module_1 = require("./modules/cart/cart.module");
@@ -40,6 +41,7 @@ exports.AppModule = AppModule = __decorate([
             products_module_1.ProductsModule,
             users_module_1.UsersModule,
         ],
+        controllers: [health_controller_1.HealthController],
         providers: [prisma_service_1.PrismaService],
     })
 ], AppModule);
