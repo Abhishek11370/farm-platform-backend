@@ -6,6 +6,12 @@ import { JwtAuthGuard } from '../../common/guards/jwt-auth.guard';
 import { RolesGuard } from '../../common/guards/roles.guard';
 import { Roles } from '../../common/decorators/roles.decorator';
 import { Role } from '@prisma/client';
+import { Request } from 'express';
+import { RequestUser } from '../../types/request-user';
+
+interface AuthenticatedRequest extends Request {
+  user: RequestUser;
+}
 
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Roles(Role.ADMIN, Role.FARMER, Role.BUYER, Role.DELIVERY)
@@ -14,22 +20,22 @@ export class AddressController {
   constructor(private readonly addressService: AddressService) {}
 
   @Get()
-  async listAddresses(@Req() req: any) {
+  async listAddresses(@Req() req: AuthenticatedRequest) {
     return this.addressService.listAddresses(req.user.id);
   }
 
   @Post()
-  async createAddress(@Req() req: any, @Body() dto: CreateAddressDto) {
+  async createAddress(@Req() req: AuthenticatedRequest, @Body() dto: CreateAddressDto) {
     return this.addressService.createAddress(req.user.id, dto);
   }
 
   @Patch(':id')
-  async updateAddress(@Param('id') id: string, @Req() req: any, @Body() dto: UpdateAddressDto) {
+  async updateAddress(@Param('id') id: string, @Req() req: AuthenticatedRequest, @Body() dto: UpdateAddressDto) {
     return this.addressService.updateAddress(id, req.user.id, dto);
   }
 
   @Delete(':id')
-  async deleteAddress(@Param('id') id: string, @Req() req: any) {
+  async deleteAddress(@Param('id') id: string, @Req() req: AuthenticatedRequest) {
     return this.addressService.deleteAddress(id, req.user.id);
   }
 }

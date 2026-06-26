@@ -13,9 +13,23 @@ import { ProductsModule } from './modules/products/products.module';
 import { UsersModule } from './modules/users/users.module';
 import { LoggerMiddleware } from './common/middleware/logger.middleware';
 
+import * as Joi from 'joi';
+
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true }),
+    ConfigModule.forRoot({
+      isGlobal: true,
+      validationSchema: Joi.object({
+        DATABASE_URL: Joi.string().required(),
+        PORT: Joi.number().default(5003),
+        ALLOWED_ORIGINS: Joi.string().required(),
+        JWT_SECRET: Joi.string().required(),
+        REFRESH_SECRET: Joi.string().required(),
+        CLOUDINARY_URL: Joi.string().optional(),
+        RAZORPAY_KEY_ID: Joi.string().optional(),
+        RAZORPAY_KEY_SECRET: Joi.string().optional(),
+      }),
+    }),
     AuthModule,
     ActivityModule,
     AddressModule,

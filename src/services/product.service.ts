@@ -1,13 +1,19 @@
+import { Prisma } from '@prisma/client';
 import prisma from '../utils/prisma';
 import { uploadImage } from '../utils/cloudinary';
+import { BadRequestException, NotFoundException, ConflictException, UnauthorizedException } from '@nestjs/common';
+import { ProductQueryDto } from '../modules/products/dto/product-query.dto';
+import { CreateProductDto } from '../modules/products/dto/create-product.dto';
+import { UpdateProductDto } from '../modules/products/dto/update-product.dto';
 
 export class ProductService {
   // PRODUCTS
-  static async listProducts(filters: any) {
+  static async listProducts(filters: ProductQueryDto) {
     const { search, categoryId, subCategoryId, gradeId, unitId, minPrice, maxPrice, page = 1, limit = 10 } = filters;
     const skip = (Number(page) - 1) * Number(limit);
 
-    const where: any = {};
+    const where: Prisma.ProductWhereInput = {};
+
 
     if (search) {
       where.OR = [
@@ -75,11 +81,11 @@ export class ProductService {
         reviews: { include: { buyer: { select: { id: true, name: true } } } }
       }
     });
-    if (!product) throw new Error('Product not found');
+    if (!product) throw new NotFoundException('Product not found');
     return product;
   }
 
-  static async createProduct(userId: string, data: any) {
+  static async createProduct(userId: string, data: CreateProductDto) {
     const { title, description, price, quantity, latitude, longitude, unitId, gradeId, subCategoryId, images } = data;
     
     // Create product
@@ -118,13 +124,11 @@ export class ProductService {
     return this.getProductById(product.id);
   }
 
-  static async updateProduct(productId: string, userId: string, userRole: string, data: any) {
+  static async updateProduct(productId: string, userId: string, userRole: string, data: UpdateProductDto) {
     const product = await prisma.product.findUnique({ where: { id: productId } });
     if (!product) throw new Error('Product not found');
     
-    if (product.ownerId !== userId && userRole !== 'ADMIN') {
-      throw new Error('Unauthorized to edit this product');
-    }
+    if (product.ownerId !== userId && userRole !== 'ADMIN') { throw new UnauthorizedException('Unauthorized to edit this product'); }
 
     const { title, description, price, quantity, latitude, longitude, unitId, gradeId, subCategoryId } = data;
 
@@ -150,9 +154,7 @@ export class ProductService {
     const product = await prisma.product.findUnique({ where: { id: productId } });
     if (!product) throw new Error('Product not found');
 
-    if (product.ownerId !== userId && userRole !== 'ADMIN') {
-      throw new Error('Unauthorized to delete this product');
-    }
+    if (product.ownerId !== userId && userRole !== 'ADMIN') { throw new UnauthorizedException('Unauthorized to delete this product'); }
 
     await prisma.product.delete({ where: { id: productId } });
     return { success: true };

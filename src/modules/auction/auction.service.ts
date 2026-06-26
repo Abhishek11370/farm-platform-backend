@@ -1,19 +1,62 @@
 import { Injectable, NotFoundException, BadRequestException, UnauthorizedException } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service';
-import { AuctionStatus } from '@prisma/client';
+import { AuctionStatus, Prisma } from '@prisma/client';
 import { broadcastAuctionBid, broadcastAuctionClosed } from '../../sockets';
 import { CreateAuctionDto } from './dto/create-auction.dto';
 import { UpdateAuctionDto } from './dto/update-auction.dto';
+import { AuctionQueryDto } from './dto/auction-query.dto';
 
 @Injectable()
 export class AuctionService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async listAuctions(filters: any) {
+  private get baseSelect() {
+    return {
+      id: true,
+      productId: true,
+      startTime: true,
+      endTime: true,
+      basePrice: true,
+      status: true,
+      createdAt: true,
+      updatedAt: true,
+      product: {
+        select: {
+          id: true,
+          title: true,
+          description: true,
+          price: true,
+          quantity: true,
+          latitude: true,
+          longitude: true,
+          createdAt: true,
+          updatedAt: true,
+          ownerId: true,
+          unit: { select: { id: true, name: true } },
+          grade: { select: { id: true, name: true } },
+          images: { select: { id: true, imageUrl: true, isPrimary: true } }
+        }
+      },
+      bids: {
+        orderBy: { amount: 'desc' as const },
+        take: 5,
+        select: {
+          id: true,
+          auctionId: true,
+          bidderId: true,
+          amount: true,
+          createdAt: true,
+          bidder: { select: { id: true, name: true, phone: true, email: true } },
+        },
+      },
+    };
+  }
+
+  async listAuctions(filters: AuctionQueryDto) {
     const { status, search, page = 1, limit = 10 } = filters;
     const skip = (Number(page) - 1) * Number(limit);
 
-    const where: any = {};
+    const where: Prisma.AuctionWhereInput = {};
     if (status) {
       where.status = status;
     }
@@ -29,14 +72,7 @@ export class AuctionService {
         skip,
         take: Number(limit),
         orderBy: { createdAt: 'desc' },
-        include: {
-          product: { include: { images: true, unit: true } },
-          bids: {
-            orderBy: { amount: 'desc' },
-            take: 5,
-            include: { bidder: { select: { id: true, name: true } } },
-          },
-        },
+        select: this.baseSelect,
       }),
       this.prisma.auction.count({ where }),
     ]);
@@ -55,11 +91,18 @@ export class AuctionService {
   async getAuctionById(id: string) {
     const auction = await this.prisma.auction.findUnique({
       where: { id },
-      include: {
-        product: { include: { images: true, unit: true, grade: true } },
+      select: {
+        ...this.baseSelect,
         bids: {
-          orderBy: { amount: 'desc' },
-          include: { bidder: { select: { id: true, name: true } } },
+          orderBy: { amount: 'desc' as const },
+          select: {
+            id: true,
+            auctionId: true,
+            bidderId: true,
+            amount: true,
+            createdAt: true,
+            bidder: { select: { id: true, name: true, phone: true, email: true } },
+          },
         },
       },
     });
@@ -74,7 +117,7 @@ export class AuctionService {
     if (!product) throw new NotFoundException('Product not found');
     if (product.ownerId !== userId) throw new UnauthorizedException('Unauthorized');
 
-    return this.prisma.auction.create({
+    const created = await this.prisma.auction.create({
       data: {
         productId,
         startTime: new Date(startTime),
@@ -82,16 +125,25 @@ export class AuctionService {
         basePrice: Number(basePrice),
         status: AuctionStatus.DRAFT,
       },
-      include: {
-        product: true,
-      },
+      select: {
+        id: true,
+        productId: true,
+        startTime: true,
+        endTime: true,
+        basePrice: true,
+        status: true,
+        createdAt: true,
+        product: { select: { id: true, title: true, ownerId: true } }
+      }
     });
+
+    return created;
   }
 
   async updateAuction(auctionId: string, userId: string, dto: UpdateAuctionDto) {
     const auction = await this.prisma.auction.findUnique({
       where: { id: auctionId },
-      include: { product: true },
+      select: { product: { select: { ownerId: true } } },
     });
     if (!auction) throw new NotFoundException('Auction not found');
     if (auction.product.ownerId !== userId) throw new UnauthorizedException('Unauthorized');
@@ -106,13 +158,25 @@ export class AuctionService {
         startTime: startTime ? new Date(startTime) : undefined,
         endTime: endTime ? new Date(endTime) : undefined,
       },
+      select: {
+        id: true,
+        productId: true,
+        startTime: true,
+        endTime: true,
+        basePrice: true,
+        status: true,
+      }
     });
 
     if (status === AuctionStatus.CLOSED) {
       const winningBid = await this.prisma.bid.findFirst({
         where: { auctionId },
         orderBy: { amount: 'desc' },
-        include: { bidder: { select: { id: true, name: true } } },
+        select: {
+          amount: true,
+          bidderId: true,
+          bidder: { select: { id: true, name: true } },
+        },
       });
       broadcastAuctionClosed(auctionId, {
         auctionId,
@@ -129,7 +193,12 @@ export class AuctionService {
   async placeBid(auctionId: string, bidderId: string, amount: number) {
     const auction = await this.prisma.auction.findUnique({
       where: { id: auctionId },
-      include: { bids: { orderBy: { amount: 'desc' }, take: 1 } },
+      select: {
+        status: true,
+        endTime: true,
+        basePrice: true,
+        bids: { orderBy: { amount: 'desc' }, take: 1, select: { amount: true } }
+      },
     });
 
     if (!auction) throw new NotFoundException('Auction not found');
@@ -149,7 +218,14 @@ export class AuctionService {
         bidderId,
         amount: Number(amount),
       },
-      include: { bidder: { select: { id: true, name: true } } },
+      select: {
+        id: true,
+        auctionId: true,
+        bidderId: true,
+        amount: true,
+        createdAt: true,
+        bidder: { select: { id: true, name: true } },
+      },
     });
 
     broadcastAuctionBid(auctionId, {
@@ -168,7 +244,14 @@ export class AuctionService {
     return this.prisma.bid.findMany({
       where: { auctionId },
       orderBy: { amount: 'desc' },
-      include: { bidder: { select: { id: true, name: true } } },
+      select: {
+        id: true,
+        auctionId: true,
+        bidderId: true,
+        amount: true,
+        createdAt: true,
+        bidder: { select: { id: true, name: true } },
+      },
     });
   }
 }

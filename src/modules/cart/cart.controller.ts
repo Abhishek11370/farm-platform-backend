@@ -6,6 +6,12 @@ import { JwtAuthGuard } from '../../common/guards/jwt-auth.guard';
 import { RolesGuard } from '../../common/guards/roles.guard';
 import { Roles } from '../../common/decorators/roles.decorator';
 import { Role } from '@prisma/client';
+import { Request } from 'express';
+import { RequestUser } from '../../types/request-user';
+
+interface AuthenticatedRequest extends Request {
+  user: RequestUser;
+}
 
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Controller('cart')
@@ -14,25 +20,25 @@ export class CartController {
 
   @Get()
   @Roles(Role.BUYER)
-  async getCart(@Req() req: any) {
+  async getCart(@Req() req: AuthenticatedRequest) {
     return this.cartService.getCart(req.user.id);
   }
 
   @Post()
   @Roles(Role.BUYER)
-  async addToCart(@Req() req: any, @Body() dto: AddToCartDto) {
+  async addToCart(@Req() req: AuthenticatedRequest, @Body() dto: AddToCartDto) {
     return this.cartService.addToCart(req.user.id, dto.productId, dto.qty);
   }
 
   @Patch(':itemId')
   @Roles(Role.BUYER)
-  async updateCartItem(@Param('itemId') itemId: string, @Req() req: any, @Body() dto: UpdateCartItemDto) {
+  async updateCartItem(@Param('itemId') itemId: string, @Req() req: AuthenticatedRequest, @Body() dto: UpdateCartItemDto) {
     return this.cartService.updateCartItem(req.user.id, itemId, dto.qty);
   }
 
   @Delete(':itemId')
   @Roles(Role.BUYER)
-  async removeCartItem(@Param('itemId') itemId: string, @Req() req: any) {
+  async removeCartItem(@Param('itemId') itemId: string, @Req() req: AuthenticatedRequest) {
     return this.cartService.removeCartItem(req.user.id, itemId);
   }
 }

@@ -4,6 +4,12 @@ import { JwtAuthGuard } from '../../common/guards/jwt-auth.guard';
 import { RolesGuard } from '../../common/guards/roles.guard';
 import { Roles } from '../../common/decorators/roles.decorator';
 import { Role } from '@prisma/client';
+import { Request } from 'express';
+import { RequestUser } from '../../types/request-user';
+
+interface AuthenticatedRequest extends Request {
+  user: RequestUser;
+}
 
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Controller('activity')
@@ -12,7 +18,7 @@ export class ActivityController {
 
   @Get()
   @Roles(Role.ADMIN, Role.FARMER, Role.BUYER, Role.DELIVERY)
-  async getUserActivities(@Req() req: any) {
+  async getUserActivities(@Req() req: AuthenticatedRequest) {
     return this.activityService.getUserActivities(req.user.id);
   }
 

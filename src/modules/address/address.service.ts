@@ -7,10 +7,27 @@ import { UpdateAddressDto } from './dto/update-address.dto';
 export class AddressService {
   constructor(private readonly prisma: PrismaService) {}
 
+  private get addressSelect() {
+    return {
+      id: true,
+      userId: true,
+      fullName: true,
+      phone: true,
+      addressLine1: true,
+      addressLine2: true,
+      city: true,
+      state: true,
+      pincode: true,
+      isDefault: true,
+      createdAt: true,
+    };
+  }
+
   async listAddresses(userId: string) {
     return this.prisma.address.findMany({
       where: { userId },
       orderBy: { isDefault: 'desc' },
+      select: this.addressSelect,
     });
   }
 
@@ -36,6 +53,7 @@ export class AddressService {
         pincode,
         isDefault: isDefault || false,
       },
+      select: this.addressSelect,
     });
   }
 
@@ -66,6 +84,7 @@ export class AddressService {
         pincode,
         isDefault,
       },
+      select: this.addressSelect,
     });
   }
 

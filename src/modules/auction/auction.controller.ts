@@ -3,10 +3,18 @@ import { AuctionService } from './auction.service';
 import { CreateAuctionDto } from './dto/create-auction.dto';
 import { UpdateAuctionDto } from './dto/update-auction.dto';
 import { PlaceBidDto } from './dto/place-bid.dto';
+import { AuctionQueryDto } from './dto/auction-query.dto';
 import { JwtAuthGuard } from '../../common/guards/jwt-auth.guard';
 import { RolesGuard } from '../../common/guards/roles.guard';
 import { Roles } from '../../common/decorators/roles.decorator';
 import { Role } from '@prisma/client';
+import { Request } from 'express';
+
+import { RequestUser } from '../../types/request-user';
+
+interface AuthenticatedRequest extends Request {
+  user: RequestUser;
+}
 
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Roles(Role.ADMIN, Role.FARMER, Role.BUYER, Role.DELIVERY)
@@ -15,19 +23,8 @@ export class AuctionController {
   constructor(private readonly auctionService: AuctionService) {}
 
   @Get()
-  async listAuctions(
-    @Query('status') status?: string,
-    @Query('search') search?: string,
-    @Query('page') page?: string,
-    @Query('limit') limit?: string,
-  ) {
-    const filters = {
-      status,
-      search,
-      page: page ? Number(page) : undefined,
-      limit: limit ? Number(limit) : undefined,
-    };
-    return this.auctionService.listAuctions(filters);
+  async listAuctions(@Query() query: AuctionQueryDto) {
+    return this.auctionService.listAuctions(query);
   }
 
   @Get(':id')
@@ -37,18 +34,18 @@ export class AuctionController {
 
   @Post()
   @Roles(Role.FARMER, Role.ADMIN)
-  async createAuction(@Req() req: any, @Body() dto: CreateAuctionDto) {
+  async createAuction(@Req() req: AuthenticatedRequest, @Body() dto: CreateAuctionDto) {
     return this.auctionService.createAuction(req.user.id, dto);
   }
 
   @Patch(':id')
   @Roles(Role.FARMER, Role.ADMIN)
-  async updateAuction(@Param('id') id: string, @Req() req: any, @Body() dto: UpdateAuctionDto) {
+  async updateAuction(@Param('id') id: string, @Req() req: AuthenticatedRequest, @Body() dto: UpdateAuctionDto) {
     return this.auctionService.updateAuction(id, req.user.id, dto);
   }
 
   @Post(':id/bid')
-  async placeBid(@Param('id') id: string, @Req() req: any, @Body() dto: PlaceBidDto) {
+  async placeBid(@Param('id') id: string, @Req() req: AuthenticatedRequest, @Body() dto: PlaceBidDto) {
     return this.auctionService.placeBid(id, req.user.id, dto.amount);
   }
 

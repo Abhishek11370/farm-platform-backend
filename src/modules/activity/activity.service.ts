@@ -13,6 +13,14 @@ export class ActivityService {
         entityType,
         entityId,
       },
+      select: {
+        id: true,
+        userId: true,
+        action: true,
+        entityType: true,
+        entityId: true,
+        createdAt: true,
+      }
     });
   }
 
@@ -21,6 +29,14 @@ export class ActivityService {
       where: { userId },
       orderBy: { createdAt: 'desc' },
       take: 20,
+      select: {
+        id: true,
+        userId: true,
+        action: true,
+        entityType: true,
+        entityId: true,
+        createdAt: true,
+      }
     });
   }
 
@@ -28,7 +44,13 @@ export class ActivityService {
     return this.prisma.activity.findMany({
       orderBy: { createdAt: 'desc' },
       take: 50,
-      include: {
+      select: {
+        id: true,
+        userId: true,
+        action: true,
+        entityType: true,
+        entityId: true,
+        createdAt: true,
         user: { select: { id: true, name: true, role: true } },
       },
     });
