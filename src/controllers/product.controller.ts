@@ -6,6 +6,7 @@ import { ProductQueryDto } from '../modules/products/dto/product-query.dto';
 import { JwtAuthGuard } from '../common/guards/jwt-auth.guard';
 import { RolesGuard } from '../common/guards/roles.guard';
 import { Roles } from '../common/decorators/roles.decorator';
+import { Public } from '../common/decorators/public.decorator';
 import { Role } from '@prisma/client';
 import { Request } from 'express';
 import { RequestUser } from '../types/request-user';
@@ -16,6 +17,7 @@ interface AuthenticatedRequest extends Request {
 
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Controller('product')
+@Public()
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
 

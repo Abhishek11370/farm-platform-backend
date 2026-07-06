@@ -1,41 +1,71 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import helmet from 'helmet';
 import { ValidationPipe } from '@nestjs/common';
 import { HttpExceptionFilter } from './common/filters/http-exception.filter';
 import { TransformInterceptor } from './common/interceptors/transform.interceptor';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import helmet from 'helmet';
+import 'dotenv/config';
+
+// CORS validator – allows dev origins and optional production URL
+const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(',').map(o => o.trim()).filter(Boolean) ?? [
+  'http://localhost:5173',
+  'http://localhost:3000',
+];
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // Security Hardening (Helmet + CORS)
+  // Security hardening
   app.use(helmet());
-  app.enableCors({
-    origin: process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : '*',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-    credentials: true,
-  });
 
-  // Global pipes
-  app.useGlobalPipes(new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true }));
-  // Global filter
+app.enableCors({
+  origin: [
+    'http://localhost:5173',
+    'http://localhost:5174',
+    'http://localhost:5175',
+    'http://localhost:5176'
+  ],
+  credentials: true,
+  methods: ['GET','POST','PUT','PATCH','DELETE','OPTIONS'],
+  allowedHeaders: ['Content-Type','Authorization']
+});
+
+  // Global validation pipe
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      forbidNonWhitelisted: true,
+    }),
+  );
+
+  // Global filters & interceptors
   app.useGlobalFilters(new HttpExceptionFilter());
-  // Global interceptor
   app.useGlobalInterceptors(new TransformInterceptor());
 
-  // Swagger setup
-  const config = new DocumentBuilder()
+  // Swagger UI (optional)
+  const swaggerConfig = new DocumentBuilder()
     .setTitle('Farm to Platform API')
-    .setDescription('The Farm to Platform API documentation')
+    .setDescription('API documentation')
     .setVersion('1.0')
     .addBearerAuth()
     .build();
-  const document = SwaggerModule.createDocument(app, config);
+  const document = SwaggerModule.createDocument(app, swaggerConfig);
   SwaggerModule.setup('api/docs', app, document);
 
-  const port = parseInt(process.env.PORT || '5003', 10);
+  // Simple health endpoint for container probes
+  app.getHttpAdapter().get('/health', (req, res) => res.send({ status: 'ok' }));
+
+  const port = parseInt(process.env.BACKEND_PORT ?? '5003', 10);
   await app.listen(port);
-  console.log(`🚀 Application listening on port ${port}`);
+  console.log(`🚀 Server listening on port ${port}`);
+
+  // Graceful shutdown handling
+  const shutdown = async () => {
+    await app.close();
+    process.exit(0);
+  };
+  process.on('SIGTERM', shutdown);
+  process.on('SIGINT', shutdown);
 }
 bootstrap();

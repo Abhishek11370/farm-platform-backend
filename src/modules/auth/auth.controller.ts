@@ -6,6 +6,8 @@ import { JwtAuthGuard } from '../../common/guards/jwt-auth.guard';
 import { RolesGuard } from '../../common/guards/roles.guard';
 import { Roles } from '../../common/decorators/roles.decorator';
 import { Role } from '@prisma/client';
+import { AuthenticatedRequest } from '../../types/authenticated-request';
+
 
 
 /**
@@ -16,7 +18,7 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('register')
-  async register(@Body() body: any, @Res() res: Response, @Req() req: Request, next: NextFunction) {
+  async register(@Body() body: any, @Res() res: Response, @Req() req: AuthenticatedRequest, next: NextFunction) {
     try {
       const result = await this.authService.register(body);
       await logAudit({
@@ -26,14 +28,14 @@ export class AuthController {
         entityId: result.user.id,
         ip: req.ip,
       });
-      res.status(201).json({ data: result, meta: null, error: null });
+      res.status(201).json(result);
     } catch (err) {
       next(err);
     }
   }
 
   @Post('login')
-  async login(@Body() body: any, @Res() res: Response, @Req() req: Request, next: NextFunction) {
+  async login(@Body() body: any, @Res() res: Response, @Req() req: AuthenticatedRequest, next: NextFunction) {
     try {
       const result = await this.authService.login(body);
       await logAudit({
@@ -43,7 +45,7 @@ export class AuthController {
         entityId: result.user.id,
         ip: req.ip,
       });
-      res.json({ data: result, meta: null, error: null });
+      res.json(result);
     } catch (err) {
       next(err);
     }
@@ -70,14 +72,14 @@ export class AuthController {
   @Post('logout')
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(Role.ADMIN, Role.FARMER, Role.BUYER, Role.DELIVERY)
-  async logout(@Req() req: Request, @Res() res: Response, next: NextFunction) {
+  async logout(@Req() req: AuthenticatedRequest, @Res() res: Response, next: NextFunction) {
     try {
       if (req.user) {
         await logAudit({
-          userId: req.user.id,
+          userId: (req.user as any).id,
           action: 'USER_LOGOUT',
           entity: 'User',
-          entityId: req.user.id,
+          entityId: (req.user as any).id,
           ip: req.ip,
         });
       }
@@ -90,9 +92,9 @@ export class AuthController {
   @Get('me')
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(Role.ADMIN, Role.FARMER, Role.BUYER, Role.DELIVERY)
-  async getMe(@Req() req: Request, @Res() res: Response, next: NextFunction) {
+  async getMe(@Req() req: AuthenticatedRequest, @Res() res: Response, next: NextFunction) {
     try {
-      const user = await this.authService.getMe(req.user!.id);
+      const user = await this.authService.getMe((req.user as any).id);
       res.json({ data: user, meta: null, error: null });
     } catch (err) {
       next(err);
@@ -102,9 +104,9 @@ export class AuthController {
   @Patch('me')
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(Role.ADMIN, Role.FARMER, Role.BUYER, Role.DELIVERY)
-  async updateProfile(@Req() req: Request, @Body() body: any, @Res() res: Response, next: NextFunction) {
+  async updateProfile(@Req() req: AuthenticatedRequest, @Body() body: any, @Res() res: Response, next: NextFunction) {
     try {
-      const user = await this.authService.updateProfile(req.user!.id, body);
+      const user = await this.authService.updateProfile((req.user as any).id, body);
       await logAudit({
         userId: req.user!.id,
         action: 'USER_PROFILE_UPDATE',

@@ -6,6 +6,7 @@ import { User } from './entities/user.entity';
 import { Roles } from '../../common/decorators/roles.decorator';
 import { Role } from '@prisma/client';
 import { JwtAuthGuard } from '../../common/guards/jwt-auth.guard';
+import { Public } from '../../common/decorators/public.decorator';
 import { RolesGuard } from '../../common/guards/roles.guard';
 import { UseGuards } from '@nestjs/common';
 
@@ -16,7 +17,8 @@ import { UseGuards } from '@nestjs/common';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Get()
+  @Public()
+@Get()
   async findAll(): Promise<User[]> {
     return this.usersService.findAll();
   }

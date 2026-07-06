@@ -1,4 +1,5 @@
-import { Module, MiddlewareConsumer, NestModule } from '@nestjs/common';
+import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
+import { APP_GUARD } from '@nestjs/core';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './modules/auth/auth.module';
 import { PrismaService } from './prisma/prisma.service';
@@ -25,9 +26,9 @@ import * as Joi from 'joi';
         ALLOWED_ORIGINS: Joi.string().required(),
         JWT_SECRET: Joi.string().required(),
         REFRESH_SECRET: Joi.string().required(),
-        CLOUDINARY_URL: Joi.string().optional(),
-        RAZORPAY_KEY_ID: Joi.string().optional(),
-        RAZORPAY_KEY_SECRET: Joi.string().optional(),
+        CLOUDINARY_URL: Joi.string().allow('').optional(),
+        RAZORPAY_KEY_ID: Joi.string().allow('').optional(),
+        RAZORPAY_KEY_SECRET: Joi.string().allow('').optional(),
       }),
     }),
     AuthModule,
