@@ -1,0 +1,632 @@
+{
+  "summary": {
+    "total": 89,
+    "passed": 88,
+    "failed": 1
+  },
+  "results": [
+    {
+      "method": "GET",
+      "path": "/",
+      "statusCode": 200,
+      "status": "PASS",
+      "reason": "Success"
+    },
+    {
+      "method": "GET",
+      "path": "/health",
+      "statusCode": 200,
+      "status": "PASS",
+      "reason": "Success"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/register",
+      "statusCode": 400,
+      "status": "PASS",
+      "reason": "400 Validation Error (expected for dummy payload)"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/login",
+      "statusCode": 201,
+      "status": "PASS",
+      "reason": "Success"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/refresh",
+      "statusCode": 500,
+      "status": "FAIL",
+      "reason": "500 Internal Server Error"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/me",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "PATCH",
+      "path": "/auth/me",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/logout",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "GET",
+      "path": "/users",
+      "statusCode": 200,
+      "status": "PASS",
+      "reason": "Success"
+    },
+    {
+      "method": "GET",
+      "path": "/users/dummy-id",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "POST",
+      "path": "/users",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "PATCH",
+      "path": "/users/dummy-id",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "DELETE",
+      "path": "/users/dummy-id",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "GET",
+      "path": "/product",
+      "statusCode": 200,
+      "status": "PASS",
+      "reason": "Success"
+    },
+    {
+      "method": "GET",
+      "path": "/product/categories",
+      "statusCode": 200,
+      "status": "PASS",
+      "reason": "Success"
+    },
+    {
+      "method": "POST",
+      "path": "/product/categories",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "GET",
+      "path": "/product/subcategories",
+      "statusCode": 200,
+      "status": "PASS",
+      "reason": "Success"
+    },
+    {
+      "method": "GET",
+      "path": "/product/units",
+      "statusCode": 200,
+      "status": "PASS",
+      "reason": "Success"
+    },
+    {
+      "method": "GET",
+      "path": "/product/grades",
+      "statusCode": 200,
+      "status": "PASS",
+      "reason": "Success"
+    },
+    {
+      "method": "GET",
+      "path": "/product/dummy-id",
+      "statusCode": 404,
+      "status": "PASS",
+      "reason": "404 Not Found (dummy ID, expected)"
+    },
+    {
+      "method": "POST",
+      "path": "/product",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "PUT",
+      "path": "/product/dummy-id",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "DELETE",
+      "path": "/product/dummy-id",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "GET",
+      "path": "/order",
+      "statusCode": 404,
+      "status": "PASS",
+      "reason": "404 Not Found (dummy ID, expected)"
+    },
+    {
+      "method": "GET",
+      "path": "/order/dummy-id",
+      "statusCode": 404,
+      "status": "PASS",
+      "reason": "404 Not Found (dummy ID, expected)"
+    },
+    {
+      "method": "POST",
+      "path": "/order",
+      "statusCode": 404,
+      "status": "PASS",
+      "reason": "404 Not Found (dummy ID, expected)"
+    },
+    {
+      "method": "PATCH",
+      "path": "/order/dummy-id/status",
+      "statusCode": 404,
+      "status": "PASS",
+      "reason": "404 Not Found (dummy ID, expected)"
+    },
+    {
+      "method": "DELETE",
+      "path": "/order/dummy-id",
+      "statusCode": 404,
+      "status": "PASS",
+      "reason": "404 Not Found (dummy ID, expected)"
+    },
+    {
+      "method": "GET",
+      "path": "/cart",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "POST",
+      "path": "/cart",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "PATCH",
+      "path": "/cart/dummy-id",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "DELETE",
+      "path": "/cart/dummy-id",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "GET",
+      "path": "/auction",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "GET",
+      "path": "/auction/dummy-id",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "POST",
+      "path": "/auction",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "PATCH",
+      "path": "/auction/dummy-id",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "POST",
+      "path": "/auction/dummy-id/bid",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "GET",
+      "path": "/auction/dummy-id/bids",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "GET",
+      "path": "/chat/messages/dummy-id",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "POST",
+      "path": "/chat/messages",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "GET",
+      "path": "/delivery",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "POST",
+      "path": "/delivery/assign",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "PATCH",
+      "path": "/delivery/dummy-id/status",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "PATCH",
+      "path": "/delivery/dummy-id/location",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "GET",
+      "path": "/delivery/earnings",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "GET",
+      "path": "/delivery/admin-earnings",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "GET",
+      "path": "/activity",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "GET",
+      "path": "/activity/admin",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "GET",
+      "path": "/address",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "POST",
+      "path": "/address",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "PATCH",
+      "path": "/address/dummy-id",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "DELETE",
+      "path": "/address/dummy-id",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "POST",
+      "path": "/payments/create-order",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "POST",
+      "path": "/payments/verify",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "POST",
+      "path": "/payments/webhook",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "GET",
+      "path": "/payments/order/dummy-id",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "GET",
+      "path": "/payments",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "GET",
+      "path": "/notifications",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "PATCH",
+      "path": "/notifications/read-all",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "PATCH",
+      "path": "/notifications/dummy-id/read",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "DELETE",
+      "path": "/notifications/dummy-id",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "POST",
+      "path": "/notifications/send",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "GET",
+      "path": "/notifications/admin/all",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "GET",
+      "path": "/wishlists",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "POST",
+      "path": "/wishlists",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "GET",
+      "path": "/wishlists/check/dummy-id",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "DELETE",
+      "path": "/wishlists/clear",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "DELETE",
+      "path": "/wishlists/dummy-id",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "POST",
+      "path": "/reviews",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "GET",
+      "path": "/reviews/product/dummy-id",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "GET",
+      "path": "/reviews/mine",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "DELETE",
+      "path": "/reviews/dummy-id",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "GET",
+      "path": "/coupons",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "POST",
+      "path": "/coupons",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "POST",
+      "path": "/coupons/validate",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "GET",
+      "path": "/coupons/dummy-id",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "PATCH",
+      "path": "/coupons/dummy-id/toggle",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "DELETE",
+      "path": "/coupons/dummy-id",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "GET",
+      "path": "/farmer-verification",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "POST",
+      "path": "/farmer-verification/submit",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "GET",
+      "path": "/farmer-verification/mine",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "GET",
+      "path": "/farmer-verification/dummy-id",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "PATCH",
+      "path": "/farmer-verification/dummy-id/review",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "GET",
+      "path": "/analytics/dashboard",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "GET",
+      "path": "/analytics/revenue",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "GET",
+      "path": "/analytics/top-products",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "GET",
+      "path": "/analytics/user-growth",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "GET",
+      "path": "/analytics/orders",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    },
+    {
+      "method": "GET",
+      "path": "/analytics/auctions",
+      "statusCode": 403,
+      "status": "PASS",
+      "reason": "403 Forbidden (role guard working)"
+    }
+  ]
+}

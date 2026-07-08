@@ -1,0 +1,497 @@
+[
+  {
+    "module": "activity",
+    "controller": "activity.controller",
+    "method": "GET",
+    "route": "/activity/admin",
+    "statusCode": 400,
+    "status": "PASS",
+    "reason": "Validation Error (Expected for dummy payload)"
+  },
+  {
+    "module": "activity",
+    "controller": "activity.controller",
+    "method": "GET",
+    "route": "/activity/",
+    "statusCode": 400,
+    "status": "PASS",
+    "reason": "Validation Error (Expected for dummy payload)"
+  },
+  {
+    "module": "address",
+    "controller": "address.controller",
+    "method": "PATCH",
+    "route": "/address/dummy-id",
+    "statusCode": 403,
+    "status": "PASS",
+    "reason": "Access Denied / Unauthorized (Expected for protected routes)"
+  },
+  {
+    "module": "address",
+    "controller": "address.controller",
+    "method": "DELETE",
+    "route": "/address/dummy-id",
+    "statusCode": 400,
+    "status": "PASS",
+    "reason": "Validation Error (Expected for dummy payload)"
+  },
+  {
+    "module": "address",
+    "controller": "address.controller",
+    "method": "GET",
+    "route": "/address/",
+    "statusCode": 400,
+    "status": "PASS",
+    "reason": "Validation Error (Expected for dummy payload)"
+  },
+  {
+    "module": "address",
+    "controller": "address.controller",
+    "method": "POST",
+    "route": "/address/",
+    "statusCode": 403,
+    "status": "PASS",
+    "reason": "Access Denied / Unauthorized (Expected for protected routes)"
+  },
+  {
+    "module": "auction",
+    "controller": "auction.controller",
+    "method": "GET",
+    "route": "/auction/dummy-id",
+    "statusCode": 400,
+    "status": "PASS",
+    "reason": "Validation Error (Expected for dummy payload)"
+  },
+  {
+    "module": "auction",
+    "controller": "auction.controller",
+    "method": "PATCH",
+    "route": "/auction/dummy-id",
+    "statusCode": 403,
+    "status": "PASS",
+    "reason": "Access Denied / Unauthorized (Expected for protected routes)"
+  },
+  {
+    "module": "auction",
+    "controller": "auction.controller",
+    "method": "POST",
+    "route": "/auction/dummy-id/bid",
+    "statusCode": 403,
+    "status": "PASS",
+    "reason": "Access Denied / Unauthorized (Expected for protected routes)"
+  },
+  {
+    "module": "auction",
+    "controller": "auction.controller",
+    "method": "GET",
+    "route": "/auction/dummy-id/bids",
+    "statusCode": 400,
+    "status": "PASS",
+    "reason": "Validation Error (Expected for dummy payload)"
+  },
+  {
+    "module": "auction",
+    "controller": "auction.controller",
+    "method": "GET",
+    "route": "/auction/",
+    "statusCode": 400,
+    "status": "PASS",
+    "reason": "Validation Error (Expected for dummy payload)"
+  },
+  {
+    "module": "auction",
+    "controller": "auction.controller",
+    "method": "POST",
+    "route": "/auction/",
+    "statusCode": 403,
+    "status": "PASS",
+    "reason": "Access Denied / Unauthorized (Expected for protected routes)"
+  },
+  {
+    "module": "auth",
+    "controller": "auth.controller",
+    "method": "POST",
+    "route": "/auth/register",
+    "statusCode": 400,
+    "status": "PASS",
+    "reason": "Validation Error (Expected for dummy payload)"
+  },
+  {
+    "module": "auth",
+    "controller": "auth.controller",
+    "method": "POST",
+    "route": "/auth/login",
+    "statusCode": 400,
+    "status": "PASS",
+    "reason": "Validation Error (Expected for dummy payload)"
+  },
+  {
+    "module": "auth",
+    "controller": "auth.controller",
+    "method": "POST",
+    "route": "/auth/refresh",
+    "statusCode": 400,
+    "status": "PASS",
+    "reason": "Validation Error (Expected for dummy payload)"
+  },
+  {
+    "module": "auth",
+    "controller": "auth.controller",
+    "method": "POST",
+    "route": "/auth/logout",
+    "statusCode": 403,
+    "status": "PASS",
+    "reason": "Access Denied / Unauthorized (Expected for protected routes)"
+  },
+  {
+    "module": "auth",
+    "controller": "auth.controller",
+    "method": "GET",
+    "route": "/auth/me",
+    "statusCode": 400,
+    "status": "PASS",
+    "reason": "Validation Error (Expected for dummy payload)"
+  },
+  {
+    "module": "auth",
+    "controller": "auth.controller",
+    "method": "PATCH",
+    "route": "/auth/me",
+    "statusCode": 403,
+    "status": "PASS",
+    "reason": "Access Denied / Unauthorized (Expected for protected routes)"
+  },
+  {
+    "module": "cart",
+    "controller": "cart.controller",
+    "method": "PATCH",
+    "route": "/cart/dummy-id",
+    "statusCode": 403,
+    "status": "PASS",
+    "reason": "Access Denied / Unauthorized (Expected for protected routes)"
+  },
+  {
+    "module": "cart",
+    "controller": "cart.controller",
+    "method": "DELETE",
+    "route": "/cart/dummy-id",
+    "statusCode": 400,
+    "status": "PASS",
+    "reason": "Validation Error (Expected for dummy payload)"
+  },
+  {
+    "module": "cart",
+    "controller": "cart.controller",
+    "method": "GET",
+    "route": "/cart/",
+    "statusCode": 400,
+    "status": "PASS",
+    "reason": "Validation Error (Expected for dummy payload)"
+  },
+  {
+    "module": "cart",
+    "controller": "cart.controller",
+    "method": "POST",
+    "route": "/cart/",
+    "statusCode": 403,
+    "status": "PASS",
+    "reason": "Access Denied / Unauthorized (Expected for protected routes)"
+  },
+  {
+    "module": "chat",
+    "controller": "chat.controller",
+    "method": "GET",
+    "route": "/chat/messages/dummy-id",
+    "statusCode": 400,
+    "status": "PASS",
+    "reason": "Validation Error (Expected for dummy payload)"
+  },
+  {
+    "module": "chat",
+    "controller": "chat.controller",
+    "method": "POST",
+    "route": "/chat/messages",
+    "statusCode": 403,
+    "status": "PASS",
+    "reason": "Access Denied / Unauthorized (Expected for protected routes)"
+  },
+  {
+    "module": "delivery",
+    "controller": "delivery.controller",
+    "method": "POST",
+    "route": "/delivery/assign",
+    "statusCode": 403,
+    "status": "PASS",
+    "reason": "Access Denied / Unauthorized (Expected for protected routes)"
+  },
+  {
+    "module": "delivery",
+    "controller": "delivery.controller",
+    "method": "PATCH",
+    "route": "/delivery/dummy-id/status",
+    "statusCode": 403,
+    "status": "PASS",
+    "reason": "Access Denied / Unauthorized (Expected for protected routes)"
+  },
+  {
+    "module": "delivery",
+    "controller": "delivery.controller",
+    "method": "PATCH",
+    "route": "/delivery/dummy-id/location",
+    "statusCode": 403,
+    "status": "PASS",
+    "reason": "Access Denied / Unauthorized (Expected for protected routes)"
+  },
+  {
+    "module": "delivery",
+    "controller": "delivery.controller",
+    "method": "GET",
+    "route": "/delivery/earnings",
+    "statusCode": 400,
+    "status": "PASS",
+    "reason": "Validation Error (Expected for dummy payload)"
+  },
+  {
+    "module": "delivery",
+    "controller": "delivery.controller",
+    "method": "GET",
+    "route": "/delivery/admin-earnings",
+    "statusCode": 400,
+    "status": "PASS",
+    "reason": "Validation Error (Expected for dummy payload)"
+  },
+  {
+    "module": "delivery",
+    "controller": "delivery.controller",
+    "method": "GET",
+    "route": "/delivery/",
+    "statusCode": 400,
+    "status": "PASS",
+    "reason": "Validation Error (Expected for dummy payload)"
+  },
+  {
+    "module": "order",
+    "controller": "order.controller",
+    "method": "GET",
+    "route": "/order/dummy-id",
+    "statusCode": 400,
+    "status": "PASS",
+    "reason": "Validation Error (Expected for dummy payload)"
+  },
+  {
+    "module": "order",
+    "controller": "order.controller",
+    "method": "PATCH",
+    "route": "/order/dummy-id/status",
+    "statusCode": 404,
+    "status": "PASS",
+    "reason": "Resource Not Found (Expected for dummy ID)"
+  },
+  {
+    "module": "order",
+    "controller": "order.controller",
+    "method": "DELETE",
+    "route": "/order/dummy-id",
+    "statusCode": 400,
+    "status": "PASS",
+    "reason": "Validation Error (Expected for dummy payload)"
+  },
+  {
+    "module": "order",
+    "controller": "order.controller",
+    "method": "POST",
+    "route": "/order/",
+    "statusCode": 404,
+    "status": "PASS",
+    "reason": "Resource Not Found (Expected for dummy ID)"
+  },
+  {
+    "module": "order",
+    "controller": "order.controller",
+    "method": "GET",
+    "route": "/order/",
+    "statusCode": 400,
+    "status": "PASS",
+    "reason": "Validation Error (Expected for dummy payload)"
+  },
+  {
+    "module": "products",
+    "controller": "products.controller",
+    "method": "GET",
+    "route": "/product/categories",
+    "statusCode": 400,
+    "status": "PASS",
+    "reason": "Validation Error (Expected for dummy payload)"
+  },
+  {
+    "module": "products",
+    "controller": "products.controller",
+    "method": "POST",
+    "route": "/product/categories",
+    "statusCode": 403,
+    "status": "PASS",
+    "reason": "Access Denied / Unauthorized (Expected for protected routes)"
+  },
+  {
+    "module": "products",
+    "controller": "products.controller",
+    "method": "GET",
+    "route": "/product/subcategories",
+    "statusCode": 400,
+    "status": "PASS",
+    "reason": "Validation Error (Expected for dummy payload)"
+  },
+  {
+    "module": "products",
+    "controller": "products.controller",
+    "method": "POST",
+    "route": "/product/subcategories",
+    "statusCode": 403,
+    "status": "PASS",
+    "reason": "Access Denied / Unauthorized (Expected for protected routes)"
+  },
+  {
+    "module": "products",
+    "controller": "products.controller",
+    "method": "GET",
+    "route": "/product/units",
+    "statusCode": 400,
+    "status": "PASS",
+    "reason": "Validation Error (Expected for dummy payload)"
+  },
+  {
+    "module": "products",
+    "controller": "products.controller",
+    "method": "POST",
+    "route": "/product/units",
+    "statusCode": 403,
+    "status": "PASS",
+    "reason": "Access Denied / Unauthorized (Expected for protected routes)"
+  },
+  {
+    "module": "products",
+    "controller": "products.controller",
+    "method": "GET",
+    "route": "/product/grades",
+    "statusCode": 400,
+    "status": "PASS",
+    "reason": "Validation Error (Expected for dummy payload)"
+  },
+  {
+    "module": "products",
+    "controller": "products.controller",
+    "method": "POST",
+    "route": "/product/grades",
+    "statusCode": 403,
+    "status": "PASS",
+    "reason": "Access Denied / Unauthorized (Expected for protected routes)"
+  },
+  {
+    "module": "products",
+    "controller": "products.controller",
+    "method": "GET",
+    "route": "/product/dummy-id",
+    "statusCode": 400,
+    "status": "PASS",
+    "reason": "Validation Error (Expected for dummy payload)"
+  },
+  {
+    "module": "products",
+    "controller": "products.controller",
+    "method": "PUT",
+    "route": "/product/dummy-id",
+    "statusCode": 403,
+    "status": "PASS",
+    "reason": "Access Denied / Unauthorized (Expected for protected routes)"
+  },
+  {
+    "module": "products",
+    "controller": "products.controller",
+    "method": "DELETE",
+    "route": "/product/dummy-id",
+    "statusCode": 400,
+    "status": "PASS",
+    "reason": "Validation Error (Expected for dummy payload)"
+  },
+  {
+    "module": "products",
+    "controller": "products.controller",
+    "method": "POST",
+    "route": "/product/dummy-id/images",
+    "statusCode": 403,
+    "status": "PASS",
+    "reason": "Access Denied / Unauthorized (Expected for protected routes)"
+  },
+  {
+    "module": "products",
+    "controller": "products.controller",
+    "method": "DELETE",
+    "route": "/product/dummy-id/images/dummy-id",
+    "statusCode": 400,
+    "status": "PASS",
+    "reason": "Validation Error (Expected for dummy payload)"
+  },
+  {
+    "module": "products",
+    "controller": "products.controller",
+    "method": "GET",
+    "route": "/product/",
+    "statusCode": 400,
+    "status": "PASS",
+    "reason": "Validation Error (Expected for dummy payload)"
+  },
+  {
+    "module": "products",
+    "controller": "products.controller",
+    "method": "POST",
+    "route": "/product/",
+    "statusCode": 403,
+    "status": "PASS",
+    "reason": "Access Denied / Unauthorized (Expected for protected routes)"
+  },
+  {
+    "module": "users",
+    "controller": "users.controller",
+    "method": "GET",
+    "route": "/users/dummy-id",
+    "statusCode": 400,
+    "status": "PASS",
+    "reason": "Validation Error (Expected for dummy payload)"
+  },
+  {
+    "module": "users",
+    "controller": "users.controller",
+    "method": "PATCH",
+    "route": "/users/dummy-id",
+    "statusCode": 403,
+    "status": "PASS",
+    "reason": "Access Denied / Unauthorized (Expected for protected routes)"
+  },
+  {
+    "module": "users",
+    "controller": "users.controller",
+    "method": "DELETE",
+    "route": "/users/dummy-id",
+    "statusCode": 400,
+    "status": "PASS",
+    "reason": "Validation Error (Expected for dummy payload)"
+  },
+  {
+    "module": "users",
+    "controller": "users.controller",
+    "method": "GET",
+    "route": "/users/",
+    "statusCode": 400,
+    "status": "PASS",
+    "reason": "Validation Error (Expected for dummy payload)"
+  },
+  {
+    "module": "users",
+    "controller": "users.controller",
+    "method": "POST",
+    "route": "/users/",
+    "statusCode": 403,
+    "status": "PASS",
+    "reason": "Access Denied / Unauthorized (Expected for protected routes)"
+  }
+]

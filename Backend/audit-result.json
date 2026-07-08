@@ -1,0 +1,526 @@
+{
+  "codeStats": {
+    "modules": [
+      {
+        "name": "activity",
+        "controllers": 1,
+        "services": 1,
+        "dtos": 0,
+        "entities": 0,
+        "repositories": 0,
+        "apis": 2,
+        "status": "Complete"
+      },
+      {
+        "name": "address",
+        "controllers": 1,
+        "services": 1,
+        "dtos": 2,
+        "entities": 0,
+        "repositories": 0,
+        "apis": 4,
+        "status": "Complete"
+      },
+      {
+        "name": "auction",
+        "controllers": 1,
+        "services": 1,
+        "dtos": 4,
+        "entities": 0,
+        "repositories": 0,
+        "apis": 6,
+        "status": "Complete"
+      },
+      {
+        "name": "auth",
+        "controllers": 1,
+        "services": 1,
+        "dtos": 4,
+        "entities": 0,
+        "repositories": 0,
+        "apis": 6,
+        "status": "Complete"
+      },
+      {
+        "name": "cart",
+        "controllers": 1,
+        "services": 1,
+        "dtos": 2,
+        "entities": 0,
+        "repositories": 0,
+        "apis": 4,
+        "status": "Complete"
+      },
+      {
+        "name": "chat",
+        "controllers": 1,
+        "services": 1,
+        "dtos": 2,
+        "entities": 0,
+        "repositories": 0,
+        "apis": 2,
+        "status": "Complete"
+      },
+      {
+        "name": "delivery",
+        "controllers": 1,
+        "services": 1,
+        "dtos": 4,
+        "entities": 0,
+        "repositories": 0,
+        "apis": 6,
+        "status": "Complete"
+      },
+      {
+        "name": "order",
+        "controllers": 1,
+        "services": 1,
+        "dtos": 2,
+        "entities": 0,
+        "repositories": 1,
+        "apis": 5,
+        "status": "Complete"
+      },
+      {
+        "name": "products",
+        "controllers": 1,
+        "services": 1,
+        "dtos": 3,
+        "entities": 0,
+        "repositories": 0,
+        "apis": 15,
+        "status": "Complete"
+      },
+      {
+        "name": "users",
+        "controllers": 1,
+        "services": 1,
+        "dtos": 3,
+        "entities": 1,
+        "repositories": 0,
+        "apis": 5,
+        "status": "Complete"
+      }
+    ],
+    "apis": [
+      {
+        "method": "GET",
+        "route": "admin",
+        "auth": true,
+        "controller": "activity.controller",
+        "module": "activity"
+      },
+      {
+        "method": "GET",
+        "route": "/",
+        "auth": true,
+        "controller": "activity.controller",
+        "module": "activity"
+      },
+      {
+        "method": "PATCH",
+        "route": ":id",
+        "auth": true,
+        "controller": "address.controller",
+        "module": "address"
+      },
+      {
+        "method": "DELETE",
+        "route": ":id",
+        "auth": true,
+        "controller": "address.controller",
+        "module": "address"
+      },
+      {
+        "method": "GET",
+        "route": "/",
+        "auth": true,
+        "controller": "address.controller",
+        "module": "address"
+      },
+      {
+        "method": "POST",
+        "route": "/",
+        "auth": true,
+        "controller": "address.controller",
+        "module": "address"
+      },
+      {
+        "method": "GET",
+        "route": ":id",
+        "auth": true,
+        "controller": "auction.controller",
+        "module": "auction"
+      },
+      {
+        "method": "PATCH",
+        "route": ":id",
+        "auth": true,
+        "controller": "auction.controller",
+        "module": "auction"
+      },
+      {
+        "method": "POST",
+        "route": ":id/bid",
+        "auth": true,
+        "controller": "auction.controller",
+        "module": "auction"
+      },
+      {
+        "method": "GET",
+        "route": ":id/bids",
+        "auth": true,
+        "controller": "auction.controller",
+        "module": "auction"
+      },
+      {
+        "method": "GET",
+        "route": "/",
+        "auth": true,
+        "controller": "auction.controller",
+        "module": "auction"
+      },
+      {
+        "method": "POST",
+        "route": "/",
+        "auth": true,
+        "controller": "auction.controller",
+        "module": "auction"
+      },
+      {
+        "method": "POST",
+        "route": "register",
+        "auth": true,
+        "controller": "auth.controller",
+        "module": "auth"
+      },
+      {
+        "method": "POST",
+        "route": "login",
+        "auth": true,
+        "controller": "auth.controller",
+        "module": "auth"
+      },
+      {
+        "method": "POST",
+        "route": "refresh",
+        "auth": true,
+        "controller": "auth.controller",
+        "module": "auth"
+      },
+      {
+        "method": "POST",
+        "route": "logout",
+        "auth": true,
+        "controller": "auth.controller",
+        "module": "auth"
+      },
+      {
+        "method": "GET",
+        "route": "me",
+        "auth": true,
+        "controller": "auth.controller",
+        "module": "auth"
+      },
+      {
+        "method": "PATCH",
+        "route": "me",
+        "auth": true,
+        "controller": "auth.controller",
+        "module": "auth"
+      },
+      {
+        "method": "PATCH",
+        "route": ":itemId",
+        "auth": true,
+        "controller": "cart.controller",
+        "module": "cart"
+      },
+      {
+        "method": "DELETE",
+        "route": ":itemId",
+        "auth": true,
+        "controller": "cart.controller",
+        "module": "cart"
+      },
+      {
+        "method": "GET",
+        "route": "/",
+        "auth": true,
+        "controller": "cart.controller",
+        "module": "cart"
+      },
+      {
+        "method": "POST",
+        "route": "/",
+        "auth": true,
+        "controller": "cart.controller",
+        "module": "cart"
+      },
+      {
+        "method": "GET",
+        "route": "messages/:partnerId",
+        "auth": true,
+        "controller": "chat.controller",
+        "module": "chat"
+      },
+      {
+        "method": "POST",
+        "route": "messages",
+        "auth": true,
+        "controller": "chat.controller",
+        "module": "chat"
+      },
+      {
+        "method": "POST",
+        "route": "assign",
+        "auth": true,
+        "controller": "delivery.controller",
+        "module": "delivery"
+      },
+      {
+        "method": "PATCH",
+        "route": ":id/status",
+        "auth": true,
+        "controller": "delivery.controller",
+        "module": "delivery"
+      },
+      {
+        "method": "PATCH",
+        "route": ":id/location",
+        "auth": true,
+        "controller": "delivery.controller",
+        "module": "delivery"
+      },
+      {
+        "method": "GET",
+        "route": "earnings",
+        "auth": true,
+        "controller": "delivery.controller",
+        "module": "delivery"
+      },
+      {
+        "method": "GET",
+        "route": "admin-earnings",
+        "auth": true,
+        "controller": "delivery.controller",
+        "module": "delivery"
+      },
+      {
+        "method": "GET",
+        "route": "/",
+        "auth": true,
+        "controller": "delivery.controller",
+        "module": "delivery"
+      },
+      {
+        "method": "GET",
+        "route": ":id",
+        "auth": true,
+        "controller": "order.controller",
+        "module": "order"
+      },
+      {
+        "method": "PATCH",
+        "route": ":id/status",
+        "auth": true,
+        "controller": "order.controller",
+        "module": "order"
+      },
+      {
+        "method": "DELETE",
+        "route": ":id",
+        "auth": true,
+        "controller": "order.controller",
+        "module": "order"
+      },
+      {
+        "method": "POST",
+        "route": "/",
+        "auth": true,
+        "controller": "order.controller",
+        "module": "order"
+      },
+      {
+        "method": "GET",
+        "route": "/",
+        "auth": true,
+        "controller": "order.controller",
+        "module": "order"
+      },
+      {
+        "method": "GET",
+        "route": "categories",
+        "auth": true,
+        "controller": "products.controller",
+        "module": "products"
+      },
+      {
+        "method": "POST",
+        "route": "categories",
+        "auth": true,
+        "controller": "products.controller",
+        "module": "products"
+      },
+      {
+        "method": "GET",
+        "route": "subcategories",
+        "auth": true,
+        "controller": "products.controller",
+        "module": "products"
+      },
+      {
+        "method": "POST",
+        "route": "subcategories",
+        "auth": true,
+        "controller": "products.controller",
+        "module": "products"
+      },
+      {
+        "method": "GET",
+        "route": "units",
+        "auth": true,
+        "controller": "products.controller",
+        "module": "products"
+      },
+      {
+        "method": "POST",
+        "route": "units",
+        "auth": true,
+        "controller": "products.controller",
+        "module": "products"
+      },
+      {
+        "method": "GET",
+        "route": "grades",
+        "auth": true,
+        "controller": "products.controller",
+        "module": "products"
+      },
+      {
+        "method": "POST",
+        "route": "grades",
+        "auth": true,
+        "controller": "products.controller",
+        "module": "products"
+      },
+      {
+        "method": "GET",
+        "route": ":id",
+        "auth": true,
+        "controller": "products.controller",
+        "module": "products"
+      },
+      {
+        "method": "PUT",
+        "route": ":id",
+        "auth": true,
+        "controller": "products.controller",
+        "module": "products"
+      },
+      {
+        "method": "DELETE",
+        "route": ":id",
+        "auth": true,
+        "controller": "products.controller",
+        "module": "products"
+      },
+      {
+        "method": "POST",
+        "route": ":id/images",
+        "auth": true,
+        "controller": "products.controller",
+        "module": "products"
+      },
+      {
+        "method": "DELETE",
+        "route": ":id/images/:imageId",
+        "auth": true,
+        "controller": "products.controller",
+        "module": "products"
+      },
+      {
+        "method": "GET",
+        "route": "/",
+        "auth": true,
+        "controller": "products.controller",
+        "module": "products"
+      },
+      {
+        "method": "POST",
+        "route": "/",
+        "auth": true,
+        "controller": "products.controller",
+        "module": "products"
+      },
+      {
+        "method": "GET",
+        "route": ":id",
+        "auth": true,
+        "controller": "users.controller",
+        "module": "users"
+      },
+      {
+        "method": "PATCH",
+        "route": ":id",
+        "auth": true,
+        "controller": "users.controller",
+        "module": "users"
+      },
+      {
+        "method": "DELETE",
+        "route": ":id",
+        "auth": true,
+        "controller": "users.controller",
+        "module": "users"
+      },
+      {
+        "method": "GET",
+        "route": "/",
+        "auth": true,
+        "controller": "users.controller",
+        "module": "users"
+      },
+      {
+        "method": "POST",
+        "route": "/",
+        "auth": true,
+        "controller": "users.controller",
+        "module": "users"
+      }
+    ],
+    "globalFiles": 0
+  },
+  "dbStats": {
+    "connected": true,
+    "counts": {
+      "user": 645,
+      "address": 320,
+      "category": 3,
+      "subCategory": 9,
+      "unit": 0,
+      "grade": 0,
+      "product": 800,
+      "productImage": 3600,
+      "auction": 400,
+      "bid": 2000,
+      "order": 1600,
+      "orderItem": 2000,
+      "cart": 20,
+      "cartItem": 800,
+      "payment": 852,
+      "transactionLog": 0,
+      "deliveryAssignment": 0,
+      "deliveryEarning": 0,
+      "chatMessage": 2400,
+      "notification": 800,
+      "wishlist": 800,
+      "searchHistory": 0,
+      "activity": 0,
+      "review": 800,
+      "farmerVerification": 0,
+      "coupon": 0,
+      "auditLog": 0
+    }
+  }
+}
