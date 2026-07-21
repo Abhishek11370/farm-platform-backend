@@ -74,4 +74,17 @@ export class AuctionController {
   async getAuctionBids(@Param("id") id: string) {
     return this.auctionService.getAuctionBids(id);
   }
+
+  @Get("farmer")
+  @Roles(Role.FARMER)
+  async getFarmerAuctions(@Req() req: AuthenticatedRequest) {
+    return this.auctionService.getFarmerAuctions(req.user.id);
+  }
+
+  @Post(":id/accept")
+  @Roles(Role.FARMER)
+  async acceptBid(@Param("id") id: string, @Req() req: AuthenticatedRequest, @Body() dto: any) {
+    return this.auctionService.acceptBid(id, req.user.id, dto);
+  }
+
 }

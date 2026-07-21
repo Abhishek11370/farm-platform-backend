@@ -10,6 +10,30 @@ export class OrderRepository {
     return this.prisma.order.create({ data });
   }
 
+  async findAllOrders() {
+    return this.prisma.order.findMany({
+      orderBy: { createdAt: 'desc' },
+      include: {
+        buyer: { select: { id: true, name: true, email: true, phone: true } },
+        items: {
+          include: {
+            product: {
+              select: {
+                id: true,
+                title: true,
+                price: true,
+                images: { take: 1, select: { imageUrl: true } },
+                owner: { select: { name: true } },
+              },
+            },
+          },
+        },
+        payment: { select: { id: true, amount: true, status: true } },
+        delivery: { select: { id: true, status: true } },
+      },
+    });
+  }
+
   async findOrderById(id: string) {
     return this.prisma.order.findUnique({
       where: { id },

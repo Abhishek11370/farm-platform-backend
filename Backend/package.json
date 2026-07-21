@@ -10,7 +10,9 @@
     "start:dev": "npm run dev",
     "start:prod": "node dist/main.js"
   },
-  "prisma": { "seed": "ts-node prisma/seed.ts" },
+  "prisma": {
+    "seed": "ts-node prisma/seed_v2.ts"
+  },
   "dependencies": {
     "@faker-js/faker": "^8.0.0",
     "@nestjs/common": "^10.0.0",
@@ -19,7 +21,9 @@
     "@nestjs/jwt": "^10.0.0",
     "@nestjs/passport": "^10.0.0",
     "@nestjs/platform-express": "^10.0.0",
+    "@nestjs/platform-socket.io": "^11.1.28",
     "@nestjs/swagger": "^7.4.2",
+    "@nestjs/websockets": "^11.1.28",
     "@prisma/client": "^5.22.0",
     "@types/express": "^5.0.6",
     "@types/jsonwebtoken": "^9.0.10",
@@ -57,5 +61,7 @@
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.9.3"
   },
-  "engines": { "node": ">=18" }
+  "engines": {
+    "node": ">=18"
+  }
 }

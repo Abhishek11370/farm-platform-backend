@@ -8,8 +8,12 @@ export class WishlistsController {
   constructor(private readonly wishlistsService: WishlistsService) {}
 
   @Get()
-  findMine(@Request() req: any) {
-    return this.wishlistsService.findMine(req.user.sub);
+  findMine(
+    @Request() req: any,
+    @Query('page') page = '1',
+    @Query('limit') limit = '10'
+  ) {
+    return this.wishlistsService.findMine(req.user.sub, +page, +limit);
   }
 
   @Post()

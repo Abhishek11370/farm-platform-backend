@@ -3,7 +3,9 @@ import { Server as HTTPServer } from "http";
 import jwt from "jsonwebtoken";
 import { logger } from "../utils/logger";
 import { RequestUser } from "../types/request-user";
+import { PrismaClient } from "@prisma/client";
 
+const prisma = new PrismaClient();
 const JWT_SECRET = process.env.JWT_SECRET || "super_secret_change_me";
 
 let io: SocketServer | null = null;
@@ -42,6 +44,10 @@ export const initSockets = (server: HTTPServer) => {
     existing.push(socket.id);
     userSockets.set(user.id, existing);
 
+    // Update DB online status and broadcast
+    prisma.user.update({ where: { id: user.id }, data: { isOnline: true } }).catch(() => {});
+    io?.emit("user:status", { userId: user.id, isOnline: true });
+
     // Join personal room and role room
     socket.join(`user_${user.id}`);
     socket.join(`role_${user.role}`);
@@ -64,6 +70,25 @@ export const initSockets = (server: HTTPServer) => {
       },
     );
 
+    // Chat: mark as read
+    socket.on(
+      "chat:read",
+      async (data: { messageId: string; senderId: string }) => {
+        try {
+          await prisma.chatMessage.update({
+            where: { id: data.messageId },
+            data: { isRead: true },
+          });
+          io?.to(`user_${data.senderId}`).emit("chat:read", {
+            messageId: data.messageId,
+            readerId: user.id,
+          });
+        } catch (error) {
+          logger.error(`Error marking message read: ${error}`);
+        }
+      },
+    );
+
     socket.on("disconnect", () => {
       logger.info(`User disconnected from Socket.io: ${user.id}`);
       const sockets = userSockets.get(user.id) || [];
@@ -72,6 +97,10 @@ export const initSockets = (server: HTTPServer) => {
         userSockets.set(user.id, updated);
       } else {
         userSockets.delete(user.id);
+        
+        // Update DB online status and broadcast
+        prisma.user.update({ where: { id: user.id }, data: { isOnline: false, lastActive: new Date() } }).catch(() => {});
+        io?.emit("user:status", { userId: user.id, isOnline: false });
       }
     });
   });

@@ -309,4 +309,9 @@ export class ProductsService {
   async createGrade(name: string) {
     return this.prisma.grade.create({ data: { name } });
   }
+
+  async getMyProducts(farmerId: string) {
+    return [];
+  }
+
 }

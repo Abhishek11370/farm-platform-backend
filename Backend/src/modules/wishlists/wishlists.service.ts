@@ -6,16 +6,23 @@ export class WishlistsService {
   constructor(private readonly prisma: PrismaService) {}
 
   /** Get the wishlist for the authenticated user */
-  async findMine(userId: string) {
-    return this.prisma.wishlist.findMany({
-      where: { userId },
-      include: {
-        product: {
-          include: { images: true, owner: { select: { id: true, name: true } } },
+  async findMine(userId: string, page = 1, limit = 10) {
+    const skip = (page - 1) * limit;
+    const [data, total] = await this.prisma.$transaction([
+      this.prisma.wishlist.findMany({
+        where: { userId },
+        skip,
+        take: limit,
+        include: {
+          product: {
+            include: { images: true, owner: { select: { id: true, name: true } } },
+          },
         },
-      },
-      orderBy: { createdAt: 'desc' },
-    });
+        orderBy: { createdAt: 'desc' },
+      }),
+      this.prisma.wishlist.count({ where: { userId } })
+    ]);
+    return { data, total, page, limit };
   }
 
   /** Add a product to the user's wishlist */

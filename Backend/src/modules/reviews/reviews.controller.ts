@@ -13,6 +13,15 @@ export class ReviewsController {
     return this.reviewsService.create(req.user.sub, dto);
   }
 
+  @Get()
+  findAll(
+    @Query('page') page = '1',
+    @Query('limit') limit = '50',
+  ) {
+    return this.reviewsService.findAdminAll(+page, +limit);
+  }
+
+
   @Get('product/:productId')
   findByProduct(
     @Param('productId') productId: string,
@@ -23,8 +32,12 @@ export class ReviewsController {
   }
 
   @Get('mine')
-  findMine(@Request() req: any) {
-    return this.reviewsService.findMine(req.user.sub);
+  findMine(
+    @Request() req: any,
+    @Query('page') page = '1',
+    @Query('limit') limit = '10'
+  ) {
+    return this.reviewsService.findMine(req.user.sub, +page, +limit);
   }
 
   @Delete(':id')

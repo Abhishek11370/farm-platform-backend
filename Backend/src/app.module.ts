@@ -22,6 +22,14 @@ import { CouponsModule } from './modules/coupons/coupons.module';
 import { FarmerVerificationModule } from './modules/farmer-verification/farmer-verification.module';
 import { AnalyticsModule } from './modules/analytics/analytics.module';
 
+
+import { AdminModule } from './modules/admin/admin.module';
+import { InventoryModule } from './modules/inventory/inventory.module';
+import { ShipmentsModule } from './modules/shipments/shipments.module';
+import { CmsModule } from './modules/cms/cms.module';
+import { SupportModule } from './modules/support/support.module';
+import { SettingsModule } from './modules/settings/settings.module';
+
 import * as Joi from "joi";
 
 @Module({
@@ -56,6 +64,12 @@ import * as Joi from "joi";
     CouponsModule,
     FarmerVerificationModule,
     AnalyticsModule,
+    AdminModule,
+    InventoryModule,
+    ShipmentsModule,
+    CmsModule,
+    SupportModule,
+    SettingsModule,
   ],
   controllers: [HealthController],
   providers: [PrismaService],

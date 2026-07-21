@@ -155,4 +155,11 @@ export class ProductsController {
       req.user.role,
     );
   }
+
+  @Get("myproducts")
+  @Roles(Role.FARMER)
+  async getMyProducts(@Req() req: AuthenticatedRequest) {
+    return this.productsService.getMyProducts(req.user.id);
+  }
+
 }

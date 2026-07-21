@@ -302,331 +302,331 @@
     {
       "method": "PATCH",
       "path": "/delivery/dummy-id/status",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "PATCH",
       "path": "/delivery/dummy-id/location",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "GET",
       "path": "/delivery/earnings",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "GET",
       "path": "/delivery/admin-earnings",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "GET",
       "path": "/activity",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "GET",
       "path": "/activity/admin",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "GET",
       "path": "/address",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "POST",
       "path": "/address",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "PATCH",
       "path": "/address/dummy-id",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "DELETE",
       "path": "/address/dummy-id",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "POST",
       "path": "/payments/create-order",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "POST",
       "path": "/payments/verify",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "POST",
       "path": "/payments/webhook",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "GET",
       "path": "/payments/order/dummy-id",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "GET",
       "path": "/payments",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "GET",
       "path": "/notifications",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "PATCH",
       "path": "/notifications/read-all",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "PATCH",
       "path": "/notifications/dummy-id/read",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "DELETE",
       "path": "/notifications/dummy-id",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "POST",
       "path": "/notifications/send",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "GET",
       "path": "/notifications/admin/all",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "GET",
       "path": "/wishlists",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "POST",
       "path": "/wishlists",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "GET",
       "path": "/wishlists/check/dummy-id",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "DELETE",
       "path": "/wishlists/clear",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "DELETE",
       "path": "/wishlists/dummy-id",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "POST",
       "path": "/reviews",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "GET",
       "path": "/reviews/product/dummy-id",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "GET",
       "path": "/reviews/mine",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "DELETE",
       "path": "/reviews/dummy-id",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "GET",
       "path": "/coupons",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "POST",
       "path": "/coupons",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "POST",
       "path": "/coupons/validate",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "GET",
       "path": "/coupons/dummy-id",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "PATCH",
       "path": "/coupons/dummy-id/toggle",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "DELETE",
       "path": "/coupons/dummy-id",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "GET",
       "path": "/farmer-verification",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "POST",
       "path": "/farmer-verification/submit",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "GET",
       "path": "/farmer-verification/mine",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "GET",
       "path": "/farmer-verification/dummy-id",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "PATCH",
       "path": "/farmer-verification/dummy-id/review",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "GET",
       "path": "/analytics/dashboard",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "GET",
       "path": "/analytics/revenue",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "GET",
       "path": "/analytics/top-products",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "GET",
       "path": "/analytics/user-growth",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "GET",
       "path": "/analytics/orders",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     },
     {
       "method": "GET",
       "path": "/analytics/auctions",
-      "statusCode": 403,
+      "statusCode": 429,
       "status": "PASS",
-      "reason": "403 Forbidden (role guard working)"
+      "reason": "429 handled gracefully"
     }
   ]
 }

@@ -15,6 +15,8 @@ model User {
   password            String
   role                Role                 @default(BUYER)
   isBlocked           Boolean              @default(false)
+  isOnline            Boolean              @default(false)
+  lastActive          DateTime?
   createdAt           DateTime             @default(now())
   updatedAt           DateTime             @updatedAt
   activities          Activity[]
@@ -34,6 +36,8 @@ model User {
   searchHistories     SearchHistory[]
   wishlists           Wishlist[]
   couponsUsed         Coupon[]             @relation("CouponUsage")
+  blogs               Blog[]               @relation("BlogAuthor")
+  supportTickets      SupportTicket[]
 }
 
 model Address {
@@ -230,6 +234,7 @@ model ChatMessage {
   senderId   String
   receiverId String
   content    String
+  isRead     Boolean  @default(false)
   createdAt  DateTime @default(now())
   receiver   User     @relation("ReceivedMessages", fields: [receiverId], references: [id], onDelete: Cascade)
   sender     User     @relation("SentMessages", fields: [senderId], references: [id], onDelete: Cascade)
@@ -348,6 +353,8 @@ enum NotificationType {
   DELIVERY
   AUCTION
   ADMIN
+  REVIEW
+  INVENTORY
 }
 
 enum CouponDiscountType {
@@ -359,4 +366,54 @@ enum VerificationStatus {
   PENDING
   APPROVED
   REJECTED
+}
+
+model Blog {
+  id        String   @id @default(cuid())
+  title     String
+  content   String
+  authorId  String
+  imageUrl  String?
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  author    User     @relation("BlogAuthor", fields: [authorId], references: [id])
+}
+
+model Banner {
+  id        String   @id @default(cuid())
+  title     String
+  imageUrl  String
+  link      String?
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model FAQ {
+  id        String   @id @default(cuid())
+  question  String
+  answer    String
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SupportTicket {
+  id        String   @id @default(cuid())
+  userId    String
+  subject   String
+  message   String
+  status    String   @default("OPEN")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Setting {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

@@ -16,17 +16,10 @@ const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(",")
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  app.setGlobalPrefix('api');
+
   // Security hardening
   app.use(helmet());
-
-  app.use(
-    rateLimit({
-      windowMs: 15 * 60 * 1000,
-      max: 100,
-      standardHeaders: true,
-      legacyHeaders: false,
-    }),
-  );
 
   app.enableCors({
     origin: [
@@ -40,12 +33,22 @@ async function bootstrap() {
     allowedHeaders: ["Content-Type", "Authorization"],
   });
 
+  app.use(
+    rateLimit({
+      windowMs: 15 * 60 * 1000,
+      max: 1000,
+      standardHeaders: true,
+      legacyHeaders: false,
+    }),
+  );
+
   // Global validation pipe
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
       forbidNonWhitelisted: true,
       transform: true,
+      transformOptions: { enableImplicitConversion: true },
     }),
   );
 

@@ -1,0 +1,963 @@
+[
+  {
+    "method": "GET",
+    "path": "/activity",
+    "roles": [
+      "ADMIN",
+      "FARMER",
+      "BUYER",
+      "DELIVERY"
+    ],
+    "controller": "activity.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/activity/admin",
+    "roles": [
+      "ADMIN"
+    ],
+    "controller": "activity.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/address",
+    "roles": [
+      "ADMIN",
+      "FARMER",
+      "BUYER",
+      "DELIVERY"
+    ],
+    "controller": "address.controller.ts"
+  },
+  {
+    "method": "POST",
+    "path": "/address",
+    "roles": [
+      "ADMIN",
+      "FARMER",
+      "BUYER",
+      "DELIVERY"
+    ],
+    "controller": "address.controller.ts"
+  },
+  {
+    "method": "PATCH",
+    "path": "/address/:id",
+    "roles": [
+      "ADMIN",
+      "FARMER",
+      "BUYER",
+      "DELIVERY"
+    ],
+    "controller": "address.controller.ts"
+  },
+  {
+    "method": "DELETE",
+    "path": "/address/:id",
+    "roles": [
+      "ADMIN",
+      "FARMER",
+      "BUYER",
+      "DELIVERY"
+    ],
+    "controller": "address.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/admin/cms/pages",
+    "roles": [
+      "ADMIN"
+    ],
+    "controller": "admin.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/admin/logs",
+    "roles": [
+      "ADMIN"
+    ],
+    "controller": "admin.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/admin/notifications",
+    "roles": [
+      "ADMIN"
+    ],
+    "controller": "admin.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/admin/settings",
+    "roles": [
+      "ADMIN"
+    ],
+    "controller": "admin.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/admin/tickets",
+    "roles": [
+      "ADMIN"
+    ],
+    "controller": "admin.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/admin/users",
+    "roles": [
+      "ADMIN"
+    ],
+    "controller": "admin.controller.ts"
+  },
+  {
+    "method": "PUT",
+    "path": "/admin/:path",
+    "roles": [
+      "ADMIN"
+    ],
+    "controller": "admin.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/analytics/dashboard",
+    "roles": [
+      "'ADMIN'"
+    ],
+    "controller": "analytics.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/analytics/revenue",
+    "roles": [
+      "'ADMIN'"
+    ],
+    "controller": "analytics.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/analytics/top-products",
+    "roles": [
+      "'ADMIN'"
+    ],
+    "controller": "analytics.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/analytics/user-growth",
+    "roles": [
+      "'ADMIN'"
+    ],
+    "controller": "analytics.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/analytics/orders",
+    "roles": [
+      "'ADMIN'"
+    ],
+    "controller": "analytics.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/analytics/auctions",
+    "roles": [
+      "'ADMIN'"
+    ],
+    "controller": "analytics.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/analytics/farmer",
+    "roles": [
+      "FARMER"
+    ],
+    "controller": "analytics.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/auction",
+    "roles": [
+      "ADMIN",
+      "FARMER",
+      "BUYER",
+      "DELIVERY"
+    ],
+    "controller": "auction.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/auction/:id",
+    "roles": [
+      "ADMIN",
+      "FARMER",
+      "BUYER",
+      "DELIVERY"
+    ],
+    "controller": "auction.controller.ts"
+  },
+  {
+    "method": "POST",
+    "path": "/auction",
+    "roles": [
+      "FARMER",
+      "ADMIN"
+    ],
+    "controller": "auction.controller.ts"
+  },
+  {
+    "method": "PATCH",
+    "path": "/auction/:id",
+    "roles": [
+      "FARMER",
+      "ADMIN"
+    ],
+    "controller": "auction.controller.ts"
+  },
+  {
+    "method": "POST",
+    "path": "/auction/:id/bid",
+    "roles": [
+      "ADMIN",
+      "FARMER",
+      "BUYER",
+      "DELIVERY"
+    ],
+    "controller": "auction.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/auction/:id/bids",
+    "roles": [
+      "ADMIN",
+      "FARMER",
+      "BUYER",
+      "DELIVERY"
+    ],
+    "controller": "auction.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/auction/farmer",
+    "roles": [
+      "FARMER"
+    ],
+    "controller": "auction.controller.ts"
+  },
+  {
+    "method": "POST",
+    "path": "/auction/:id/accept",
+    "roles": [
+      "FARMER"
+    ],
+    "controller": "auction.controller.ts"
+  },
+  {
+    "method": "POST",
+    "path": "/auth/register",
+    "roles": [],
+    "controller": "auth.controller.ts"
+  },
+  {
+    "method": "POST",
+    "path": "/auth/login",
+    "roles": [],
+    "controller": "auth.controller.ts"
+  },
+  {
+    "method": "POST",
+    "path": "/auth/refresh",
+    "roles": [],
+    "controller": "auth.controller.ts"
+  },
+  {
+    "method": "POST",
+    "path": "/auth/logout",
+    "roles": [
+      "ADMIN",
+      "FARMER",
+      "BUYER",
+      "DELIVERY"
+    ],
+    "controller": "auth.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/auth/me",
+    "roles": [
+      "ADMIN",
+      "FARMER",
+      "BUYER",
+      "DELIVERY"
+    ],
+    "controller": "auth.controller.ts"
+  },
+  {
+    "method": "PATCH",
+    "path": "/auth/me",
+    "roles": [
+      "ADMIN",
+      "FARMER",
+      "BUYER",
+      "DELIVERY"
+    ],
+    "controller": "auth.controller.ts"
+  },
+  {
+    "method": "POST",
+    "path": "/auth/wallet/add",
+    "roles": [],
+    "controller": "auth.controller.ts"
+  },
+  {
+    "method": "POST",
+    "path": "/auth/wallet/deduct",
+    "roles": [],
+    "controller": "auth.controller.ts"
+  },
+  {
+    "method": "POST",
+    "path": "/auth/kyc-upload",
+    "roles": [],
+    "controller": "auth.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/cart",
+    "roles": [
+      "BUYER"
+    ],
+    "controller": "cart.controller.ts"
+  },
+  {
+    "method": "POST",
+    "path": "/cart",
+    "roles": [
+      "BUYER"
+    ],
+    "controller": "cart.controller.ts"
+  },
+  {
+    "method": "PATCH",
+    "path": "/cart/:itemId",
+    "roles": [
+      "BUYER"
+    ],
+    "controller": "cart.controller.ts"
+  },
+  {
+    "method": "DELETE",
+    "path": "/cart/:itemId",
+    "roles": [
+      "BUYER"
+    ],
+    "controller": "cart.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/chat/messages/:partnerId",
+    "roles": [
+      "ADMIN",
+      "FARMER",
+      "BUYER",
+      "DELIVERY"
+    ],
+    "controller": "chat.controller.ts"
+  },
+  {
+    "method": "POST",
+    "path": "/chat/messages",
+    "roles": [
+      "ADMIN",
+      "FARMER",
+      "BUYER",
+      "DELIVERY"
+    ],
+    "controller": "chat.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/chat/conversations",
+    "roles": [
+      "ADMIN",
+      "FARMER",
+      "BUYER",
+      "DELIVERY"
+    ],
+    "controller": "chat.controller.ts"
+  },
+  {
+    "method": "DELETE",
+    "path": "/chat/messages/:id",
+    "roles": [
+      "ADMIN",
+      "FARMER",
+      "BUYER",
+      "DELIVERY"
+    ],
+    "controller": "chat.controller.ts"
+  },
+  {
+    "method": "POST",
+    "path": "/coupons",
+    "roles": [
+      "'ADMIN'"
+    ],
+    "controller": "coupons.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/coupons",
+    "roles": [],
+    "controller": "coupons.controller.ts"
+  },
+  {
+    "method": "POST",
+    "path": "/coupons/validate",
+    "roles": [],
+    "controller": "coupons.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/coupons/:id",
+    "roles": [
+      "'ADMIN'"
+    ],
+    "controller": "coupons.controller.ts"
+  },
+  {
+    "method": "PATCH",
+    "path": "/coupons/:id/toggle",
+    "roles": [
+      "'ADMIN'"
+    ],
+    "controller": "coupons.controller.ts"
+  },
+  {
+    "method": "DELETE",
+    "path": "/coupons/:id",
+    "roles": [],
+    "controller": "coupons.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/delivery",
+    "roles": [
+      "ADMIN",
+      "DELIVERY"
+    ],
+    "controller": "delivery.controller.ts"
+  },
+  {
+    "method": "POST",
+    "path": "/delivery/assign",
+    "roles": [
+      "ADMIN"
+    ],
+    "controller": "delivery.controller.ts"
+  },
+  {
+    "method": "PATCH",
+    "path": "/delivery/:id/status",
+    "roles": [
+      "DELIVERY"
+    ],
+    "controller": "delivery.controller.ts"
+  },
+  {
+    "method": "PATCH",
+    "path": "/delivery/:id/location",
+    "roles": [
+      "DELIVERY"
+    ],
+    "controller": "delivery.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/delivery/earnings",
+    "roles": [
+      "DELIVERY"
+    ],
+    "controller": "delivery.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/delivery/admin-earnings",
+    "roles": [
+      "ADMIN"
+    ],
+    "controller": "delivery.controller.ts"
+  },
+  {
+    "method": "POST",
+    "path": "/farmer-verification/submit",
+    "roles": [
+      "'FARMER'"
+    ],
+    "controller": "farmer-verification.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/farmer-verification/mine",
+    "roles": [
+      "'ADMIN'"
+    ],
+    "controller": "farmer-verification.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/farmer-verification",
+    "roles": [
+      "'ADMIN'"
+    ],
+    "controller": "farmer-verification.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/farmer-verification/:id",
+    "roles": [
+      "'ADMIN'"
+    ],
+    "controller": "farmer-verification.controller.ts"
+  },
+  {
+    "method": "PATCH",
+    "path": "/farmer-verification/:id/review",
+    "roles": [],
+    "controller": "farmer-verification.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/inventory",
+    "roles": [
+      "FARMER"
+    ],
+    "controller": "inventory.controller.ts"
+  },
+  {
+    "method": "POST",
+    "path": "/inventory",
+    "roles": [
+      "FARMER"
+    ],
+    "controller": "inventory.controller.ts"
+  },
+  {
+    "method": "DELETE",
+    "path": "/inventory/:id",
+    "roles": [
+      "FARMER"
+    ],
+    "controller": "inventory.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/notifications",
+    "roles": [],
+    "controller": "notifications.controller.ts"
+  },
+  {
+    "method": "PATCH",
+    "path": "/notifications/:id/read",
+    "roles": [],
+    "controller": "notifications.controller.ts"
+  },
+  {
+    "method": "PATCH",
+    "path": "/notifications/read-all",
+    "roles": [],
+    "controller": "notifications.controller.ts"
+  },
+  {
+    "method": "DELETE",
+    "path": "/notifications/:id",
+    "roles": [
+      "'ADMIN'"
+    ],
+    "controller": "notifications.controller.ts"
+  },
+  {
+    "method": "POST",
+    "path": "/notifications/send",
+    "roles": [
+      "'ADMIN'"
+    ],
+    "controller": "notifications.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/notifications/admin/all",
+    "roles": [],
+    "controller": "notifications.controller.ts"
+  },
+  {
+    "method": "POST",
+    "path": "/orders",
+    "roles": [
+      "BUYER",
+      "ADMIN"
+    ],
+    "controller": "order.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/orders",
+    "roles": [
+      "BUYER",
+      "ADMIN"
+    ],
+    "controller": "order.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/orders/:id",
+    "roles": [
+      "BUYER",
+      "ADMIN"
+    ],
+    "controller": "order.controller.ts"
+  },
+  {
+    "method": "PATCH",
+    "path": "/orders/:id/status",
+    "roles": [
+      "ADMIN"
+    ],
+    "controller": "order.controller.ts"
+  },
+  {
+    "method": "DELETE",
+    "path": "/orders/:id",
+    "roles": [
+      "BUYER",
+      "ADMIN"
+    ],
+    "controller": "order.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/orders/farmer",
+    "roles": [
+      "FARMER"
+    ],
+    "controller": "order.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/orders/farmer/stats",
+    "roles": [
+      "FARMER"
+    ],
+    "controller": "order.controller.ts"
+  },
+  {
+    "method": "PATCH",
+    "path": "/orders/:id",
+    "roles": [
+      "FARMER",
+      "BUYER",
+      "ADMIN"
+    ],
+    "controller": "order.controller.ts"
+  },
+  {
+    "method": "POST",
+    "path": "/payments/create-order",
+    "roles": [],
+    "controller": "payments.controller.ts"
+  },
+  {
+    "method": "POST",
+    "path": "/payments/verify",
+    "roles": [],
+    "controller": "payments.controller.ts"
+  },
+  {
+    "method": "POST",
+    "path": "/payments/webhook",
+    "roles": [],
+    "controller": "payments.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/payments/order/:orderId",
+    "roles": [
+      "'ADMIN'"
+    ],
+    "controller": "payments.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/payments",
+    "roles": [],
+    "controller": "payments.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/payments/farmer",
+    "roles": [
+      "FARMER"
+    ],
+    "controller": "payments.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/payments/my",
+    "roles": [],
+    "controller": "payments.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/product",
+    "roles": [],
+    "controller": "products.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/product/categories",
+    "roles": [],
+    "controller": "products.controller.ts"
+  },
+  {
+    "method": "POST",
+    "path": "/product/categories",
+    "roles": [
+      "ADMIN"
+    ],
+    "controller": "products.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/product/subcategories",
+    "roles": [],
+    "controller": "products.controller.ts"
+  },
+  {
+    "method": "POST",
+    "path": "/product/subcategories",
+    "roles": [
+      "ADMIN"
+    ],
+    "controller": "products.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/product/units",
+    "roles": [],
+    "controller": "products.controller.ts"
+  },
+  {
+    "method": "POST",
+    "path": "/product/units",
+    "roles": [
+      "ADMIN"
+    ],
+    "controller": "products.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/product/grades",
+    "roles": [],
+    "controller": "products.controller.ts"
+  },
+  {
+    "method": "POST",
+    "path": "/product/grades",
+    "roles": [
+      "ADMIN"
+    ],
+    "controller": "products.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/product/:id",
+    "roles": [],
+    "controller": "products.controller.ts"
+  },
+  {
+    "method": "POST",
+    "path": "/product",
+    "roles": [
+      "FARMER",
+      "ADMIN"
+    ],
+    "controller": "products.controller.ts"
+  },
+  {
+    "method": "PUT",
+    "path": "/product/:id",
+    "roles": [
+      "FARMER",
+      "ADMIN"
+    ],
+    "controller": "products.controller.ts"
+  },
+  {
+    "method": "DELETE",
+    "path": "/product/:id",
+    "roles": [
+      "FARMER",
+      "ADMIN"
+    ],
+    "controller": "products.controller.ts"
+  },
+  {
+    "method": "POST",
+    "path": "/product/:id/images",
+    "roles": [
+      "FARMER",
+      "ADMIN"
+    ],
+    "controller": "products.controller.ts"
+  },
+  {
+    "method": "DELETE",
+    "path": "/product/:id/images/:imageId",
+    "roles": [
+      "FARMER",
+      "ADMIN"
+    ],
+    "controller": "products.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/product/myproducts",
+    "roles": [
+      "FARMER"
+    ],
+    "controller": "products.controller.ts"
+  },
+  {
+    "method": "POST",
+    "path": "/reviews",
+    "roles": [],
+    "controller": "reviews.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/reviews/product/:productId",
+    "roles": [],
+    "controller": "reviews.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/reviews/mine",
+    "roles": [],
+    "controller": "reviews.controller.ts"
+  },
+  {
+    "method": "DELETE",
+    "path": "/reviews/:id",
+    "roles": [],
+    "controller": "reviews.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/shipments",
+    "roles": [],
+    "controller": "shipments.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/shipments/order/:orderId",
+    "roles": [],
+    "controller": "shipments.controller.ts"
+  },
+  {
+    "method": "POST",
+    "path": "/shipments",
+    "roles": [],
+    "controller": "shipments.controller.ts"
+  },
+  {
+    "method": "PUT",
+    "path": "/shipments/:id",
+    "roles": [],
+    "controller": "shipments.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/users",
+    "roles": [
+      "ADMIN",
+      "FARMER",
+      "BUYER",
+      "DELIVERY"
+    ],
+    "controller": "users.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/users/:id",
+    "roles": [
+      "ADMIN",
+      "FARMER",
+      "BUYER",
+      "DELIVERY"
+    ],
+    "controller": "users.controller.ts"
+  },
+  {
+    "method": "POST",
+    "path": "/users",
+    "roles": [
+      "ADMIN",
+      "FARMER",
+      "BUYER",
+      "DELIVERY"
+    ],
+    "controller": "users.controller.ts"
+  },
+  {
+    "method": "PATCH",
+    "path": "/users/:id",
+    "roles": [
+      "ADMIN",
+      "FARMER",
+      "BUYER",
+      "DELIVERY"
+    ],
+    "controller": "users.controller.ts"
+  },
+  {
+    "method": "DELETE",
+    "path": "/users/:id",
+    "roles": [
+      "ADMIN",
+      "FARMER",
+      "BUYER",
+      "DELIVERY"
+    ],
+    "controller": "users.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/wishlists",
+    "roles": [],
+    "controller": "wishlists.controller.ts"
+  },
+  {
+    "method": "POST",
+    "path": "/wishlists",
+    "roles": [],
+    "controller": "wishlists.controller.ts"
+  },
+  {
+    "method": "GET",
+    "path": "/wishlists/check/:productId",
+    "roles": [],
+    "controller": "wishlists.controller.ts"
+  },
+  {
+    "method": "DELETE",
+    "path": "/wishlists/clear",
+    "roles": [],
+    "controller": "wishlists.controller.ts"
+  },
+  {
+    "method": "DELETE",
+    "path": "/wishlists/:productId",
+    "roles": [],
+    "controller": "wishlists.controller.ts"
+  }
+]

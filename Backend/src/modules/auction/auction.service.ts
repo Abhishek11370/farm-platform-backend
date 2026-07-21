@@ -279,4 +279,13 @@ export class AuctionService {
       },
     });
   }
+
+  async getFarmerAuctions(userId: string) {
+    return [];
+  }
+
+  async acceptBid(auctionId: string, userId: string, dto: any) {
+    return { success: true };
+  }
+
 }

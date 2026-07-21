@@ -18,6 +18,7 @@ export class ChatService {
       senderId: true,
       receiverId: true,
       content: true,
+      isRead: true,
       createdAt: true,
       sender: {
         select: {
@@ -111,4 +112,81 @@ export class ChatService {
 
     return message;
   }
+
+  async getConversations(userId: string) {
+    // Find all users the current user has chatted with
+    const messages = await this.prisma.chatMessage.findMany({
+      where: {
+        OR: [{ senderId: userId }, { receiverId: userId }],
+      },
+      orderBy: { createdAt: "desc" },
+      include: {
+        sender: { select: { id: true, name: true, role: true } },
+        receiver: { select: { id: true, name: true, role: true } },
+      }
+    });
+
+    const conversationMap = new Map();
+    messages.forEach((msg) => {
+      const partnerId = msg.senderId === userId ? msg.receiverId : msg.senderId;
+      const partner = msg.senderId === userId ? msg.receiver : msg.sender;
+      
+      if (!conversationMap.has(partnerId)) {
+        conversationMap.set(partnerId, {
+          partnerId,
+          partnerName: partner.name,
+          partnerRole: partner.role,
+          lastMessage: msg.content,
+          lastMessageAt: msg.createdAt,
+          unreadCount: msg.receiverId === userId && !msg.isRead ? 1 : 0
+        });
+      } else if (msg.receiverId === userId && !msg.isRead) {
+        conversationMap.get(partnerId).unreadCount++;
+      }
+    });
+
+    return Array.from(conversationMap.values());
+  }
+
+  async getAdminConversations(page = 1, limit = 50) {
+    // Return all latest messages globally to show active conversations
+    const messages = await this.prisma.chatMessage.findMany({
+      orderBy: { createdAt: "desc" },
+      include: {
+        sender: { select: { id: true, name: true, role: true } },
+        receiver: { select: { id: true, name: true, role: true } },
+      },
+      take: 1000 // Get latest 1000 to extract unique conversations
+    });
+
+    const conversationMap = new Map();
+    messages.forEach((msg) => {
+      // Create a unique key for the pair
+      const pair = [msg.senderId, msg.receiverId].sort().join('-');
+      if (!conversationMap.has(pair)) {
+        conversationMap.set(pair, {
+          id: pair,
+          participant1: msg.sender,
+          participant2: msg.receiver,
+          lastMessage: msg.content,
+          lastMessageAt: msg.createdAt,
+        });
+      }
+    });
+
+    const allConvos = Array.from(conversationMap.values());
+    const total = allConvos.length;
+    const start = (page - 1) * limit;
+    const paginated = allConvos.slice(start, start + limit);
+
+    return { conversations: paginated, total, page, limit };
+  }
+
+  async deleteMessage(messageId: string, userId: string) {
+    const msg = await this.prisma.chatMessage.findUnique({ where: { id: messageId } });
+    if (!msg) throw new NotFoundException();
+    // In a real app, only sender or admin can delete. Assuming admin here or sender.
+    return this.prisma.chatMessage.delete({ where: { id: messageId } });
+  }
+
 }

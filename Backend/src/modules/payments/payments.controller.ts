@@ -1,13 +1,19 @@
 import {
   Controller, Get, Post, Body, Param, Query,
-  UseGuards, Request,
+  UseGuards, Request, Req
 } from '@nestjs/common';
+import { Role } from '@prisma/client';
 import { PaymentsService } from './payments.service';
 import { JwtAuthGuard } from '../../common/guards/jwt-auth.guard';
 import { RolesGuard } from '../../common/guards/roles.guard';
 import { Roles } from '../../common/decorators/roles.decorator';
 import { CreatePaymentDto } from './dto/create-payment.dto';
 import { VerifyPaymentDto } from './dto/verify-payment.dto';
+import { RequestUser } from "../../types/request-user";
+
+interface AuthenticatedRequest extends Request {
+  user: RequestUser;
+}
 
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Controller('payments')
@@ -47,4 +53,16 @@ export class PaymentsController {
   ) {
     return this.paymentsService.findAll(+page, +limit);
   }
+
+  @Get("farmer")
+  @Roles(Role.FARMER)
+  async getFarmerPayments(@Req() req: AuthenticatedRequest) {
+    return [];
+  }
+
+  @Get("my")
+  async getMyPayments(@Req() req: AuthenticatedRequest) {
+    return [];
+  }
+
 }

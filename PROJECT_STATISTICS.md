@@ -13,4 +13,4 @@
 - Total Prisma Models: 27
 - Total Database Tables: 27
 - Total API Endpoints: 89
-- Total Database Records: 17864
+- Total Database Records: 1280

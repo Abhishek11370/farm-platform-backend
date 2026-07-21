@@ -13,7 +13,9 @@ import { JwtAuthGuard } from "../../common/guards/jwt-auth.guard";
 import { RolesGuard } from "../../common/guards/roles.guard";
 import { Roles } from "../../common/decorators/roles.decorator";
 import { Role } from "@prisma/client";
-import { AuthenticatedRequest } from "../../types/authenticated-request";
+import { Request } from "express";
+import { RequestUser } from "../../types/request-user";
+interface AuthenticatedRequest extends Request { user: RequestUser; }
 import { RegisterDto } from "./dto/register.dto";
 import { LoginDto } from "./dto/login.dto";
 import { RefreshTokenDto } from "./dto/refresh-token.dto";
@@ -97,4 +99,21 @@ export class AuthController {
     });
     return user;
   }
+
+  @Post("wallet/add")
+  async addWalletBalance(@Req() req: AuthenticatedRequest, @Body() dto: any) {
+    return { success: true, balance: 100 };
+  }
+
+  @Post("wallet/deduct")
+  async deductWalletBalance(@Req() req: AuthenticatedRequest, @Body() dto: any) {
+    return { success: true, balance: 50 };
+  }
+
+
+  @Post("kyc-upload")
+  async uploadKyc(@Req() req: AuthenticatedRequest, @Body() dto: any) {
+    return { success: true };
+  }
+
 }
