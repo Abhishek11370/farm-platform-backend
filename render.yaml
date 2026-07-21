@@ -2,11 +2,14 @@ services:
   - type: web
     name: farm-to-platform-backend
     env: node
-    buildCommand: cd Backend && npm install && npx prisma generate && npx prisma migrate deploy && npm run build
-    startCommand: cd Backend && npm run start:prod
+    rootDir: Backend
+    buildCommand: npm install && npx prisma generate && npx prisma migrate deploy && npm run build
+    startCommand: npm run start:prod
     envVars:
       - key: NODE_ENV
         value: production
+      - key: NODE_VERSION
+        value: 22.x
       - key: DATABASE_URL
         sync: false
       - key: JWT_SECRET
