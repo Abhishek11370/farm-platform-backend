@@ -69,8 +69,8 @@ async function bootstrap() {
   // Simple health endpoint for container probes
   app.getHttpAdapter().get("/health", (req, res) => res.send({ status: "ok" }));
 
-  const port = parseInt(process.env.BACKEND_PORT ?? "5003", 10);
-  await app.listen(port);
+  const port = Number(process.env.PORT) || 5003;
+  await app.listen(port, '0.0.0.0');
   console.log(`🚀 Server listening on port ${port}`);
 
   // Graceful shutdown handling
